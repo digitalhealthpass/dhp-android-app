@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/activity_vertical_margin">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="20dp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/cardBackground"
+            app:cardCornerRadius="@dimen/card_corner"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="30dp">
+
+                <ImageView
+                    android:id="@+id/upload_status_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_check_circle_black_48dp"
+                    app:tint="@color/colorPrimary" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/upload_status_title_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/contact_uploadComplete_title"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/font_header" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/upload_status_description_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="@string/successfully_uploaded_selected_credentials_to_the_contact"
+                    android:textColor="@color/subTextLabels"
+                    android:textSize="@dimen/font_body" />
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/uploadComp_txt_shared"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="20dp"
+            android:text="Credentials Shared"
+            android:textAllCaps="true"
+            android:textColor="@color/subTextLabels" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView_shared_credentials"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/square_with_rounded_corner"
+            android:elevation="4dp"
+            android:nestedScrollingEnabled="false"
+            android:padding="10dp"
+            tools:itemCount="3"
+            tools:listitem="@layout/consent_credential_item" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/uploadComp_txt_failed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="20dp"
+            android:text="Credentials not processed"
+            android:textAllCaps="true"
+            android:textColor="@color/subTextLabels" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView_failed_credentials"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/square_with_rounded_corner"
+            android:elevation="4dp"
+            android:nestedScrollingEnabled="false"
+            android:padding="10dp"
+            tools:itemCount="3"
+            tools:listitem="@layout/consent_credential_item" />
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

@@ -1,0 +1,329 @@
+{
+    "name": "Default wallet configuration",
+    "configuration": {
+        "DCC": {
+            "details": [
+                {
+                    "field": "nam.gn",
+                    "sectionIndex": 0,
+                    "sectionTitle": {
+                        "en": "Personal Info"
+                    },
+                    "displayValue": {
+                        "en": "First Name",
+                        "de": "Vorname"
+                    }
+                },
+                {
+                    "field": "nam.fn",
+                    "sectionIndex": 0,
+                    "sectionTitle": {
+                        "en": "Personal Info"
+                    },
+                    "displayValue": {
+                        "en": "Surname",
+                        "de": "Nachname"
+                    }
+                },
+                {
+                    "field": "dob",
+                    "sectionIndex": 0,
+                    "sectionTitle": {
+                        "en": "Personal Info"
+                    },
+                    "displayValue": {
+                        "en": "Date of Birth",
+                        "de": "Geburtsdatum"
+                    }
+                },
+                {
+                    "field": "v.0.tg",
+                    "sectionIndex": 1,
+                    "sectionTitle": {
+                        "en": "Vaccination Record"
+                    },
+                    "displayValue": {
+                        "en": "Target Disease",
+                        "de": "Zielkrankheit"
+                    },
+                    "valueMapper": "disease-agent-targeted-dcc"
+                },
+                {
+                    "field": "v.0.vp",
+                    "sectionIndex": 1,
+                    "sectionTitle": {
+                        "en": "Vaccination Record"
+                    },
+                    "displayValue": {
+                        "en": "Vaccine Code",
+                        "de": "Impfcode"
+                    },
+                    "valueMapper": "vaccine-prophylaxis-dcc"
+                },
+                {
+                    "field": "v.0.mp",
+                    "sectionIndex": 1,
+                    "sectionTitle": {
+                        "en": "Vaccination Record"
+                    },
+                    "displayValue": {
+                        "en": "Vaccine",
+                        "de": "Impfstoff"
+                    },
+                    "valueMapper": "vaccine-medicinal-product-dcc"
+                },
+                {
+                    "field": "v.0.ma",
+                    "sectionIndex": 1,
+                    "sectionTitle": {
+                        "en": "Vaccination Record"
+                    },
+                    "displayValue": {
+                        "en": "Manufacturer",
+                        "de": "Hersteller"
+                    },
+                    "valueMapper": "vaccine-mah-manf-dcc"
+                },
+                {
+                    "field": "v.0.dn",
+                    "sectionIndex": 1,
+                    "sectionTitle": {
+                        "en": "Vaccination Record"
+                    },
+                    "displayValue": {
+                        "en": "Dose Number",
+                        "de": "Dosisnummer"
+                    }
+                },
+                {
+                    "field": "v.0.dt",
+                    "sectionIndex": 1,
+                    "sectionTitle": {
+                        "en": "Vaccination Record"
+                    },
+                    "displayValue": {
+                        "en": "Vaccination Date",
+                        "de": "Impfdatum"
+                    }
+                },
+                {
+                    "field": "v.0.sd",
+                    "sectionIndex": 1,
+                    "sectionTitle": {
+                        "en": "Vaccination Record"
+                    },
+                    "displayValue": {
+                        "en": "Total doses required",
+                        "de": "Gesamtdosen erforderlich"
+                    }
+                },
+                {
+                    "field": "v.0.co",
+                    "sectionIndex": 2,
+                    "displayValue": {
+                        "en": "Country of Vaccination",
+                        "de": "Impfland"
+                    },
+                    "valueMapper": "country"
+                },
+                {
+                    "field": "v.0.is",
+                    "sectionIndex": 2,
+                    "displayValue": {
+                        "en": "Certificate Issuer",
+                        "de": "Zertifikatsaussteller"
+                    }
+                },
+                {
+                    "field": "v.0.ci",
+                    "sectionIndex": 2,
+                    "displayValue": {
+                        "en": "Certificate ID",
+                        "de": "Zertifikats-ID"
+                    }
+                },
+                {
+                    "field": "t.0.tg",
+                    "sectionIndex": 1,
+                    "sectionTitle": {
+                        "en": "Test Record"
+                    },
+                    "displayValue": {
+                        "en": "Target Disease",
+                        "de": "Zielkrankheit"
+                    },
+                    "valueMapper": "disease-agent-targeted-dcc"
+                },
+                {
+                    "field": "t.0.tt",
+                    "sectionIndex": 1,
+                    "sectionTitle": {
+                        "en": "Test Record"
+                    },
+                    "displayValue": {
+                        "en": "Test Type",
+                        "de": "Testtyp"
+                    },
+                    "valueMapper": "test-type-dcc"
+                },
+                {
+                    "field": "t.0.nm",
+                    "sectionIndex": 1,
+                    "sectionTitle": {
+                        "en": "Test Record"
+                    },
+                    "displayValue": {
+                        "en": "Test Name"
+                    }
+                },
+                {
+                    "field": "t.0.ma",
+                    "sectionIndex": 1,
+                    "sectionTitle": {
+                        "en": "Test Record"
+                    },
+                    "displayValue": {
+                        "en": "Test Device Identifier"
+                    }
+                },
+                {
+                    "field": "t.0.sc",
+                    "sectionIndex": 1,
+                    "sectionTitle": {
+                        "en": "Test Record"
+                    },
+                    "displayValue": {
+                        "en": "Date of Test",
+                        "de": "Datum des Test"
+                    }
+                },
+                {
+                    "field": "t.0.tr",
+                    "sectionIndex": 1,
+                    "sectionTitle": {
+                        "en": "Test Record"
+                    },
+                    "displayValue": {
+                        "en": "Result",
+                        "de": "Ergebnis"
+                    },
+                    "valueMapper": "test-result-dcc"
+                },
+                {
+                    "field": "t.0.tc",
+                    "sectionIndex": 2,
+                    "displayValue": {
+                        "en": "Testing Centre",
+                        "de": "Testzentrum"
+                    }
+                },
+                {
+                    "field": "t.0.co",
+                    "sectionIndex": 2,
+                    "displayValue": {
+                        "en": "Country of Test",
+                        "de": "Testland"
+                    },
+                    "valueMapper": "country"
+                },
+                {
+                    "field": "t.0.is",
+                    "sectionIndex": 2,
+                    "displayValue": {
+                        "en": "Certificate Issuer",
+                        "de": "Zertifikatsaussteller"
+                    }
+                },
+                {
+                    "field": "t.0.ci",
+                    "sectionIndex": 2,
+                    "displayValue": {
+                        "en": "Certificate ID",
+                        "de": "Zertifikats-ID"
+                    }
+                },
+                {
+                    "field": "t.0.dr",
+                    "sectionIndex": 1,
+                    "sectionTitle": {
+                        "en": "Test Record"
+                    },
+                    "displayValue": {
+                        "en": "Date of Test Result",
+                        "de": "Datum des Testergebnisses"
+                    }
+                },
+                {
+                    "field": "r.0.tg",
+                    "sectionIndex": 1,
+                    "sectionTitle": {
+                        "en": "Recovery Record"
+                    },
+                    "displayValue": {
+                        "en": "Target Disease",
+                        "de": "Zielkrankheit"
+                    },
+                    "valueMapper": "disease-agent-targeted-dcc"
+                },
+                {
+                    "field": "r.0.fr",
+                    "sectionIndex": 1,
+                    "sectionTitle": {
+                        "en": "Recovery Record"
+                    },
+                    "displayValue": {
+                        "en": "Date of First Positive Test",
+                        "de": "Datum des ersten positiven Tests"
+                    }
+                },
+                {
+                    "field": "r.0.co",
+                    "sectionIndex": 2,
+                    "displayValue": {
+                        "en": "Country of Test",
+                        "de": "Testland"
+                    },
+                    "valueMapper": "country"
+                },
+                {
+                    "field": "r.0.is",
+                    "sectionIndex": 2,
+                    "displayValue": {
+                        "en": "Certificate Issuer",
+                        "de": "Zertifikatsaussteller"
+                    }
+                },
+                {
+                    "field": "r.0.df",
+                    "sectionIndex": 1,
+                    "sectionTitle": {
+                        "en": "Recovery Record"
+                    },
+                    "displayValue": {
+                        "en": "Certificate Valid From",
+                        "de": "Zertifikat gültig ab"
+                    }
+                },
+                {
+                    "field": "r.0.du",
+                    "sectionIndex": 1,
+                    "sectionTitle": {
+                        "en": "Recovery Record"
+                    },
+                    "displayValue": {
+                        "en": "Certificate Valid Until",
+                        "de": "Zertifikat gültig bis"
+                    }
+                },
+                {
+                    "field": "r.0.ci",
+                    "sectionIndex": 2,
+                    "displayValue": {
+                        "en": "Certificate ID",
+                        "de": "Zertifikats-ID"
+                    }
+                }
+            ]
+        }
+    }
+}

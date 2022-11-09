@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/cardBackground">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/activity_horizontal_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/wallet_credential_imageview"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:contentDescription="@string/cardview_description"
+            android:src="@color/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.5"
+            tools:layout_height="30dp"
+            tools:layout_width="50dp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/scan_type_textview"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:fontFamily="@font/plex_sans_medium"
+            android:gravity="start"
+            android:textSize="@dimen/font_action"
+            android:textStyle="bold"
+            android:visibility="visible"
+            app:layout_constraintBottom_toTopOf="@id/wallet_name_textview"
+            app:layout_constraintEnd_toStartOf="@id/img_chevron"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toEndOf="@id/wallet_credential_imageview"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints"
+            tools:text="Flue Vaccine" />
+
+        <TextView
+            android:id="@+id/wallet_name_textview"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:fontFamily="@font/plex_sans_medium"
+            android:gravity="start"
+            android:lines="5"
+            android:minLines="1"
+            android:textSize="@dimen/font_action"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintEnd_toStartOf="@id/img_chevron"
+            app:layout_constraintStart_toEndOf="@id/wallet_credential_imageview"
+            app:layout_constraintTop_toBottomOf="@id/scan_type_textview"
+            tools:text="@string/cd_subheader_downloaded_hp" />
+
+        <TextView
+            android:id="@+id/wallet_expiration_date_textview"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:gravity="start"
+            android:maxLines="1"
+            android:textColor="@color/subTextLabels"
+            android:textSize="@dimen/font_body"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintEnd_toStartOf="@id/img_chevron"
+            app:layout_constraintStart_toEndOf="@id/wallet_credential_imageview"
+            app:layout_constraintTop_toBottomOf="@id/wallet_name_textview"
+            tools:text="@string/cd_subheader_downloaded_hp" />
+
+        <ImageView
+            android:id="@+id/img_chevron"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/right_chevron"
+            android:src="@drawable/ic_chevron_right"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/divider_line"
+        style="@style/DividerGrey"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,32 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="font_xl">30sp</dimen>
+    <dimen name="font_title_header">28sp</dimen>
+    <dimen name="font_24">24sp</dimen>
+    <dimen name="font_22">22sp</dimen>
+    <dimen name="font_18">18sp</dimen>
+    <dimen name="font_header">20sp</dimen>
+    <dimen name="font_action">17sp</dimen>
+    <dimen name="font_input">16sp</dimen>
+    <dimen name="font_body">14sp</dimen>
+    <dimen name="font_14">14sp</dimen>
+    <dimen name="font_secondary">12sp</dimen>
+    <dimen name="font_small">10sp</dimen>
+
+    <dimen name="text_margin">16dp</dimen>
+    <dimen name="margin_10">10dp</dimen>
+    <dimen name="margin_8">8dp</dimen>
+    <dimen name="margin_20">20dp</dimen>
+    <dimen name="margin_5">5dp</dimen>
+
+    <dimen name="card_corner">10dp</dimen>
+    <dimen name="indicator_size">4dp</dimen>
+
+    <dimen name="minHeight">30dp</dimen>
+    <dimen name="credMinHeight">180dp</dimen>
+    <dimen name="minAccessibilityHeight">48dp</dimen>
+    <dimen name="toolbar_height">110dp</dimen>
+</resources>

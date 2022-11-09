@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <bool name="kiosk_mode_enabled">false</bool>
+    <bool name="kiosk_mode_always_auto_dismiss">true</bool>
+    <bool name="kiosk_mode_front_camera">false</bool>
+</resources>

@@ -1,0 +1,98 @@
+{
+  "message": "Successfully onboarded new user",
+  "payload": [
+    {
+      "@context": [
+        "https://www.w3.org/2018/credentials/v1"
+      ],
+      "id": "did:hpass:095573b3ed146d92780bb6a51fadb9c64e0bc975079723b5f93db666ee44a67d:023e5571d0824bb43a74608c47043af51581bcb7e370499fd471ccb1c87c7639#vc-102b03f3-002d-4211-b30d-75639c0a5490",
+      "type": [
+        "VerifiableCredential"
+      ],
+      "issuer": "did:hpass:095573b3ed146d92780bb6a51fadb9c64e0bc975079723b5f93db666ee44a67d:023e5571d0824bb43a74608c47043af51581bcb7e370499fd471ccb1c87c7639",
+      "issuanceDate": "2021-01-26T20:17:59Z",
+      "expirationDate": "2022-01-26T20:17:58Z",
+      "credentialSchema": {
+        "id": "did:hpass:095573b3ed146d92780bb6a51fadb9c64e0bc975079723b5f93db666ee44a67d:023e5571d0824bb43a74608c47043af51581bcb7e370499fd471ccb1c87c7639;id=bts_contact;version=0.1",
+        "type": "JsonSchemaValidator2018"
+      },
+      "credentialSubject": {
+        "contact": "https://www.healthcareitleaders.com/contact/",
+        "name": "Healthcare IT Leaders",
+        "privacyPolicy": "https://www.healthcareitleaders.com/privacy-policy/",
+        "services": [
+          {
+            "purposes": [
+              {
+                "purpose": "To be able to issue test results as verifiable credentials directly to the data subject's digital wallet."
+              }
+            ],
+            "service": "download"
+          }
+        ],
+        "technical": {
+          "download": {
+            "id": "d3c86bf6e7d465245fd642dd5d27cad7",
+            "linkId": "d41d4704-ce9b-43c2-9e15-0e0a007a3864",
+            "passcode": "e1cdedab-0f33-4d4f-879b-77317f3f103d",
+            "url": "https://dev1.wh-hpass.dev.acme.com/api/v1/postbox/ap1/v1/documents"
+          },
+          "symmetricKey": {
+            "algorithm": "aes-256-cbc",
+            "iv": "Yfns6Ohpy1vdEZa5yeiIaA==",
+            "value": "rW2twXZ4kaqMAx8dku76Yq+OzW2f7yUuxzrDsSBWikE="
+          },
+          "upload": {
+            "id": "d3c86bf6e7d465245fd642dd5d27cad7",
+            "linkId": "2651b4ed-f445-42b8-b9a0-95cdca4a269e",
+            "passcode": "88530a5c-296c-4a47-951d-acba68f1acd9",
+            "url": "https://dev1.wh-hpass.dev.acme.com/api/v1/postbox/ap1/v1/documents"
+          }
+        },
+        "type": "profile",
+        "userAgreement": "TBC",
+        "website": "https://www.healthcareitleaders.com/"
+      },
+      "proof": {
+        "created": "2021-01-26T20:17:59Z",
+        "creator": "did:hpass:095573b3ed146d92780bb6a51fadb9c64e0bc975079723b5f93db666ee44a67d:023e5571d0824bb43a74608c47043af51581bcb7e370499fd471ccb1c87c7639#key-1",
+        "nonce": "f0f44497-ed2d-4d94-92b8-6c85f94e74bd",
+        "signatureValue": "MEUCIQCv0qLuHcTLIg6WXsS_smseW9MZDknkdLJ0mAoZLsRRowIgRgZLHytF71x0ljJ0T3zuhoM81QHhMXLFSqwdE4eAA4c",
+        "type": "EcdsaSecp256r1Signature2019"
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/2018/credentials/v1"
+      ],
+      "id": "did:hpass:095573b3ed146d92780bb6a51fadb9c64e0bc975079723b5f93db666ee44a67d:023e5571d0824bb43a74608c47043af51581bcb7e370499fd471ccb1c87c7639#vc-90a8049b-6d10-4159-a483-d543d69d20c0",
+      "type": [
+        "VerifiableCredential"
+      ],
+      "issuer": "did:hpass:095573b3ed146d92780bb6a51fadb9c64e0bc975079723b5f93db666ee44a67d:023e5571d0824bb43a74608c47043af51581bcb7e370499fd471ccb1c87c7639",
+      "issuanceDate": "2021-01-26T20:17:59Z",
+      "expirationDate": "2022-01-26T20:17:59Z",
+      "credentialSchema": {
+        "id": "did:hpass:095573b3ed146d92780bb6a51fadb9c64e0bc975079723b5f93db666ee44a67d:023e5571d0824bb43a74608c47043af51581bcb7e370499fd471ccb1c87c7639;id=hit_id;version=0.1",
+        "type": "JsonSchemaValidator2018"
+      },
+      "credentialSubject": {
+        "id": "d3c86bf6e7d465245fd642dd5d27cad7",
+        "location": "US-MA",
+        "name": {
+          "familyName": "test",
+          "givenName": "neal"
+        },
+        "organization": "hit",
+        "type": "id"
+      },
+      "proof": {
+        "created": "2021-01-26T20:17:59Z",
+        "creator": "did:hpass:095573b3ed146d92780bb6a51fadb9c64e0bc975079723b5f93db666ee44a67d:023e5571d0824bb43a74608c47043af51581bcb7e370499fd471ccb1c87c7639#key-1",
+        "nonce": "a984a5f6-04b1-480c-9764-e904bb130c5e",
+        "signatureValue": "MEUCIQDJ74h8zgS-wUKKqK7RD5m3hnLck-F7_QAUU9EtT4jWKAIgQ15DXn8H_sYB026ki6ovAcBL306-Yy6WoEwTaYYJL_8",
+        "type": "EcdsaSecp256r1Signature2019"
+      }
+    }
+  ]
+}

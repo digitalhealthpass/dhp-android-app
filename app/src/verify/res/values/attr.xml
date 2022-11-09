@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CardResult">
+        <attr name="cr_icon" format="reference" />
+        <attr name="cr_title" format="string" />
+        <attr name="cr_title_color" format="color" />
+        <attr name="cr_description" format="boolean" />
+        <attr name="cr_description_color" format="color" />
+    </declare-styleable>
+
+</resources>

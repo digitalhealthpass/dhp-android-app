@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menu_reset_wallet"
+        app:showAsAction="always"
+        app:itemTextColor="@color/red"
+        android:enabled="true"
+        android:visible="false"
+        android:title="@string/pin_reset_title"/>
+</menu>

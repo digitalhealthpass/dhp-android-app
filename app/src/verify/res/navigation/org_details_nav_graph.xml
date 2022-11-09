@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/org_details_nav_graph"
+    app:startDestination="@+id/organizationDetailsFragment">
+
+    <fragment
+        android:id="@+id/organizationDetailsFragment"
+        android:name="com.merative.healthpass.ui.organization.OrganizationDetailsFragment"
+        tools:layout="@layout/frag_organization_details"
+        android:label="" >
+
+    </fragment>
+</navigation>

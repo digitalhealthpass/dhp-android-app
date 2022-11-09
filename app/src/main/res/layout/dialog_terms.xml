@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/cardBackground">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/title_textview"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/text_margin"
+        android:fontFamily="@font/plex_sans_regular"
+        android:gravity="center"
+        android:paddingLeft="@dimen/margin_10"
+        android:textColor="@color/textLabels"
+        android:textSize="@dimen/font_input"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/message_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/text_margin"
+        android:fontFamily="@font/plex_sans_regular"
+        android:paddingHorizontal="@dimen/margin_10"
+        android:textColor="@color/textLabels"
+        android:textSize="@dimen/font_body"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_textview" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/negative_textView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/minHeight"
+        android:background="@color/grayButtonBackground"
+        android:paddingLeft="@dimen/margin_10"
+        android:paddingTop="@dimen/margin_10"
+        android:paddingBottom="@dimen/minHeight"
+        android:textColor="@color/white"
+        android:textSize="@dimen/font_body"
+        app:layout_constraintHorizontal_weight="5"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/positive_textView"
+        app:layout_constraintTop_toBottomOf="@+id/message_textView" />
+
+    <ViewAnimator
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/minHeight"
+        android:background="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintLeft_toRightOf="@+id/negative_textView"
+        app:layout_constraintRight_toLeftOf="@+id/positive_textView"
+        app:layout_constraintTop_toBottomOf="@+id/message_textView"
+        tools:ignore="MissingConstraints" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/positive_textView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/minHeight"
+        android:background="@color/colorPrimary"
+        android:paddingLeft="@dimen/margin_10"
+        android:paddingTop="@dimen/margin_10"
+        android:paddingBottom="@dimen/minHeight"
+        android:textColor="@color/white"
+        android:textSize="@dimen/font_body"
+        app:layout_constraintHorizontal_weight="5"
+        app:layout_constraintLeft_toRightOf="@+id/negative_textView"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/message_textView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

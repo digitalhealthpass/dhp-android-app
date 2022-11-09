@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_landing_graph"
+    app:startDestination="@id/landingFragment">
+
+    <fragment
+        android:id="@+id/landingFragment"
+        android:name="com.merative.healthpass.ui.landing.LandingFragment"
+        android:label="">
+        <deepLink
+            android:id="@+id/dl_add_credential"
+            app:action="ACTION_VIEW"
+            app:uri="dhpwallet://request/credential?data={qr_credential_json_encoded}" />
+
+        <deepLink
+            android:id="@+id/dl_contact_download"
+            app:action="ACTION_VIEW"
+            app:uri="https://open.dhpwallet.app/download?cred={cred}" />
+
+        <!-- the orgName and code are keys that are used in fragments, be careful while changing them-->
+        <deepLink
+            android:id="@+id/dl_registerOrg"
+            app:action="ACTION_VIEW"
+            app:uri="registration?org={orgName}&amp;code={code}" />
+
+        <deepLink
+            android:id="@+id/dl_registerOrg2"
+            app:action="ACTION_VIEW"
+            app:uri="https://open.dhpwallet.app/registration?org={orgName}&amp;code={code}" />
+
+        <deepLink
+            android:id="@+id/open_wallet_only"
+            app:action="ACTION_VIEW"
+            app:uri="http://open.dhpwallet.app" />
+
+        <deepLink
+            android:id="@+id/open_wallet_only_landing"
+            app:action="ACTION_VIEW"
+            app:uri="dhpwallet://open.dhpwallet.app/registration" />
+    </fragment>
+</navigation>

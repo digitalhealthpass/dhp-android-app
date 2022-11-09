@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "636918914772",
+    "project_id": "watsonmobile-1608646714112",
+    "storage_bucket": "watsonmobile-1608646714112.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:636918914772:android:0e663e1db117ee387aa541",
+        "android_client_info": {
+          "package_name": "com.merative.watson.healthpass.verify"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "636918914772-0923n0b3sbg5hr1u4rrutlaq29n6f3hp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxG6X20vYQ4L0E1BaEtehyJX1wkYSmjsk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "636918914772-0923n0b3sbg5hr1u4rrutlaq29n6f3hp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:636918914772:android:dd49112dbb9eca7c7aa541",
+        "android_client_info": {
+          "package_name": "com.merative.watson.healthpass.verify.qa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "636918914772-0923n0b3sbg5hr1u4rrutlaq29n6f3hp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxG6X20vYQ4L0E1BaEtehyJX1wkYSmjsk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "636918914772-0923n0b3sbg5hr1u4rrutlaq29n6f3hp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

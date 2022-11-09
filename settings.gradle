@@ -1,0 +1,5 @@
+include ':app'
+include ':QRCoder'
+include ':VerificationEngine'
+include ':VerifiableCredential'
+rootProject.name='Health Pass'

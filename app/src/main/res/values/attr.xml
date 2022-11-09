@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="QrCodeMethod">
+        <attr name="qcm_icon" format="reference" />
+        <attr name="qcm_right_text" format="string" />
+        <attr name="qcm_show_divider" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="ButtonWithTimer">
+        <attr name="bwt_text" format="string" />
+        <attr name="bwt_btn_text" format="string" />
+        <!-- Count down timer in seconds -->
+        <attr name="bwt_timer_max" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="LabelValueItem">
+        <attr name="lvi_left" format="string" />
+        <attr name="lvi_left_color" format="color" />
+        <attr name="lvi_right" format="string" />
+        <attr name="lvi_right_color" format="color" />
+        <attr name="lvi_show_divider" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="RadioDescriptionButton">
+        <attr name="rdb_title" format="string" />
+        <attr name="rdb_title_color" format="color" />
+        <attr name="rdb_description" format="string" />
+        <attr name="rdb_description_color" format="color" />
+        <attr name="rdb_show_divider" format="boolean" />
+    </declare-styleable>
+</resources>

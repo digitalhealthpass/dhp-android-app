@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:scrollbars="none">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+        android:orientation="vertical"
+        android:paddingBottom="30dp">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/kioskModeCardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            app:cardBackgroundColor="@color/cardBackground"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/kioskModeSwitch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/text_margin"
+                android:minHeight="@dimen/minAccessibilityHeight"
+                android:text="@string/kiosk_mode"
+                android:textSize="@dimen/font_body" />
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/kioskModeCardViewDescriptionTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/text_margin"
+            android:layout_marginTop="@dimen/margin_8"
+            android:text="@string/kiosk_mode_description"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/kioskModeCardView" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/dismissDurationCardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/activity_vertical_margin"
+            app:cardBackgroundColor="@color/cardBackground"
+            app:cardCornerRadius="10dp"
+            app:icon="@drawable/ic_chevron_right"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/kioskModeCardViewDescriptionTextView">
+
+            <com.merative.healthpass.ui.common.custom.LabelValueItem
+                android:id="@+id/dismissDurationLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                app:lvi_left="@string/kiosk_mode_auto_dismiss_duration"
+                app:lvi_show_divider="false" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/dismissCardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            app:cardBackgroundColor="@color/cardBackground"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dismissDurationCardView">
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/dismissDurationSwitch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/text_margin"
+                android:text="@string/kiosk_mode_auto_dismiss"
+                android:minHeight="@dimen/minAccessibilityHeight"
+                android:textSize="@dimen/font_body" />
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/autoDismissTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/text_margin"
+            android:layout_marginTop="@dimen/margin_8"
+            android:text="@string/kiosk_mode_auto_dismiss_description"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dismissCardView" />
+
+        <TextView
+            android:id="@+id/cameraSettingsTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/text_margin"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:text="@string/kiosk_mode_camera_settings"
+            android:textAllCaps="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/autoDismissTextView" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cameraCardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="5dp"
+            app:cardBackgroundColor="@color/cardBackground"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cameraSettingsTextView">
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/cameraSwitch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/minAccessibilityHeight"
+                android:layout_marginHorizontal="@dimen/text_margin"
+                android:text="@string/kiosk_mode_camera_default"
+                android:textSize="@dimen/font_body" />
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

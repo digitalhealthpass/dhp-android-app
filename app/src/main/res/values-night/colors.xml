@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3C99FF</color>
+    <color name="colorPrimaryDark">@color/colorPrimary</color>
+    <color name="colorAccent">#1C5EA1</color>
+
+    <color name="appBackground">#000000</color>
+    <color name="cardBackground">#1A1919</color>
+    <color name="sheetBackground">#1A1919</color>
+    <color name="formFieldLines">#212121</color>
+    <color name="notch">#E0E4E7</color>
+    <color name="textLabels">#ffffffff</color>
+    <color name="textLabelsInverse">#000</color>
+    <color name="subTextLabels">#D8D8DD</color>
+    <color name="credentialColor">#1A1919</color>
+    <color name="contactColor">#1A1919</color>
+    <color name="systemOrange">#ff9f0a</color>
+
+    <!-- logo color   -->
+    <color name="ic_gradient_01">#FF3DDBD9</color>
+    <color name="ic_gradient_09">#FFBE95FF</color>
+    <color name="ic_plus_fill">#f4f4f4</color>
+    <color name="ic_back_fill">#FF000000</color>
+
+</resources>

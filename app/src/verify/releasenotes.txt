@@ -1,0 +1,18 @@
+Debug Build, Environment: Dev2
+
+    - https://jira.wh-sdlc.acme.com/browse/WHDEV-4021
+
+    Dev related, QA please ignore
+    versionCode 81
+    versionName "2.2.1"
+    Tag: Anshul Tyagi
+------------------------------
+
+    - classifier-rule-fix of Verify
+    - https://jira.wh-sdlc.acme.com/browse/WHDEV-4010
+
+    Dev related, QA please ignore
+    versionCode 80
+    versionName "2.2.0"
+    Tag: Anshul Tyagi
+------------------------------

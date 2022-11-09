@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ok">OK</string>
+    <string name="invalid_qr">The QR is invalid, and could not read it</string>
+    <string name="authorize_camera">Authorize</string>
+    <string name="please_update_health_pass_app_settings">Please allow Health Pass App to access Camera in order to be able to scan QR codes.</string>
+    <string name="app_is_not_authorized_to_access_the_device_camera">Health Pass is not authorized to access the device camera.</string>
+    <string name="permission_denied">Permission Denied</string>
+    <string name="allow">Allow</string>
+    <string name="decline">Decline</string>
+
+    <string name="camera_access_permission_text">This app uses the camera to scan the QR code.</string>
+    <string name="camera_access_permission_title">Camera Permission</string>
+
+    <string name="flash_on">Flash is on</string>
+    <string name="flash_off">Flash is off</string>
+
+    <string name="camera_switch_btn_description">"Tap here to switch between the front-facing camera and the back-facing camera."</string>
+    <string name="flash_button_description">"Tap here to either turn on or turn off the camera flash."</string>
+
+    <string name="scan_frame_description">Hold camera still with the QR code in the box above</string>
+</resources>

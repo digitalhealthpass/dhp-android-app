@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/associated_key_details_rv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="33dp"
+        android:background="@drawable/square_with_rounded_corner"
+        android:elevation="4dp"
+        android:paddingHorizontal="@dimen/margin_10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:itemCount="3"
+        tools:listitem="@layout/simple_info_recycler_item_view" />
+
+    <TextView
+        android:id="@+id/tap_to_copy_subtext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="9dp"
+        android:text="@string/kpm_footerTitle"
+        android:textColor="@color/subTextLabels"
+        app:layout_constraintStart_toStartOf="@id/associated_key_details_rv"
+        app:layout_constraintTop_toBottomOf="@id/associated_key_details_rv" />
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+        android:layout_marginBottom="36dp"
+        android:gravity="start|center_vertical"
+        android:text="@string/delete_key"
+        android:textColor="@color/red"
+        android:textStyle="normal"
+        android:visibility="gone"
+        app:backgroundTint="@color/cardBackground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tap_to_copy_subtext"
+        app:layout_constraintVertical_bias="1"
+        tools:visibility="visible" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

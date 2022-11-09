@@ -1,0 +1,127 @@
+{
+  "message": "Successfully onboarded new user",
+  "payload": [
+    {
+      "@context": [
+        "https://www.w3.org/2018/credentials/v1"
+      ],
+      "id": "did:hpass:19b0cf0d5fc7017dd66ddd2374fbd9b796d988aced083d709abbaa0f7480b474:55b065567f3d126e4521beb881e9624ec8068cb1dde64f88d5949725da72908e#vc-4a7aa829-4f4e-4f31-94bc-02770cf3cd35",
+      "type": [
+        "VerifiableCredential"
+      ],
+      "issuer": "did:hpass:19b0cf0d5fc7017dd66ddd2374fbd9b796d988aced083d709abbaa0f7480b474:55b065567f3d126e4521beb881e9624ec8068cb1dde64f88d5949725da72908e",
+      "issuanceDate": "2021-02-16T22:15:10Z",
+      "credentialSchema": {
+        "id": "did:hpass:19b0cf0d5fc7017dd66ddd2374fbd9b796d988aced083d709abbaa0f7480b474:55b065567f3d126e4521beb881e9624ec8068cb1dde64f88d5949725da72908e;id=nih-issuer;version=0.4",
+        "type": "JsonSchemaValidator2018"
+      },
+      "credentialSubject": {
+        "consentInfo": {
+          "jurisdiction": "US",
+          "language": "en",
+          "piiControllers": [
+            {
+              "address": {
+                "city": "New York",
+                "country": "United States",
+                "line": "1 Main St",
+                "postalCode": "12345",
+                "state": "NY"
+              },
+              "contact": "John Smith, Acme Corp, Chief Data Privacy Officer",
+              "email": "support@acmecorp.com",
+              "onbehalf": true,
+              "phone": "+353563405577",
+              "piiController": "Acme Corp",
+              "piiControllerUrl": "https://acmecorp.com"
+            }
+          ],
+          "piiPrincipalId": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtoSQ4WEQW4NvGOd2BZQJiYU0LjFWI+Ch\n20/qFv7HSK34/L1Eehk6neiOs2LLW9RwuNzUZ3eqnu5bPQwYVMSwHlC+6JUK6B+qRjcYuMFFBB01\n3L4KUmSX/N3iMiWEZxEVsRyModIFl1vVz/HvdW3g6S5zT31t5PRPs0tF8tEespJAy8zJX+G8TiW8\n8z0qUNH/1IvHvc3yFe7sD+ZCF/UwSoM+2ek0peW1fdFKmF1w03OtVxn0hKGjl73a0Ilhf6DqphRR\ncUncyN5xBDBM5v4UypK02U5WIRo9Kx0zqeGOshfRdkPTt+jwaL1yQ7zOs/YGVWQT+Aa8brk7BNPP\ngZRXtQIDAQAB\n",
+          "policyUrl": "https://acmecorp.com/privacypolicy",
+          "sensitive": false,
+          "services": [
+            {
+              "purposes": [
+                {
+                  "consentType": "EXPLICIT",
+                  "piiCategory": [
+                    "Personal Data"
+                  ],
+                  "purpose": "NIH performs medical and behavioral research for the United States of America, and will use this data as part of that function.",
+                  "purposeCategory": "Medical Research",
+                  "termination": "Owner-mediated via Digital Wallet",
+                  "thirdPartyDisclosure": false
+                }
+              ],
+              "service": "NIH Research"
+            }
+          ],
+          "spiCat": [
+            ""
+          ],
+          "version": "ISO/IEC 29184:2020"
+        },
+        "technical": {
+          "poBox": {
+            "id": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtoSQ4WEQW4NvGOd2BZQJiYU0LjFWI+Ch\n20/qFv7HSK34/L1Eehk6neiOs2LLW9RwuNzUZ3eqnu5bPQwYVMSwHlC+6JUK6B+qRjcYuMFFBB01\n3L4KUmSX/N3iMiWEZxEVsRyModIFl1vVz/HvdW3g6S5zT31t5PRPs0tF8tEespJAy8zJX+G8TiW8\n8z0qUNH/1IvHvc3yFe7sD+ZCF/UwSoM+2ek0peW1fdFKmF1w03OtVxn0hKGjl73a0Ilhf6DqphRR\ncUncyN5xBDBM5v4UypK02U5WIRo9Kx0zqeGOshfRdkPTt+jwaL1yQ7zOs/YGVWQT+Aa8brk7BNPP\ngZRXtQIDAQAB\n",
+            "linkId": "a6ef2cdf-10f7-4054-b365-05199d98e24a",
+            "passcode": "d4b49416-e613-44f0-a5cc-a50c62acc3ba",
+            "symmetricKey": {
+              "algorithm": "aes-256-cbc",
+              "iv": "ufiZTXKccYzbtVNJdafKiQ==",
+              "value": "gUuTqWIcMWpMqi+zJ9jqCYqc+UrA9ydqnMfYRi8NE10="
+            },
+            "url": "https://dev1.wh-hpass.dev.acme.com/api/v1/postbox/ap1/v1/documents"
+          }
+        },
+        "termination": {
+          "url": "www.acmecorp.com/terminate"
+        },
+        "type": "profile"
+      },
+      "proof": {
+        "created": "2021-02-16T22:15:10Z",
+        "creator": "did:hpass:19b0cf0d5fc7017dd66ddd2374fbd9b796d988aced083d709abbaa0f7480b474:55b065567f3d126e4521beb881e9624ec8068cb1dde64f88d5949725da72908e#key-1",
+        "nonce": "36bff229-b016-488e-a17a-8b1a5ac47518",
+        "signatureValue": "MEUCIQC8bJzT2hKmGsoNxEdvzZiq4lvV82l6XUZWHA8oXuhyXQIgX5ARSjm9mlL-d2BaReT1kwr3balmgiczgZjfL0ZFlo8",
+        "type": "EcdsaSecp256r1Signature2019"
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/2018/credentials/v1"
+      ],
+      "id": "did:hpass:19b0cf0d5fc7017dd66ddd2374fbd9b796d988aced083d709abbaa0f7480b474:55b065567f3d126e4521beb881e9624ec8068cb1dde64f88d5949725da72908e#vc-02131055-2b3b-4610-8629-7ffd9b2a9ee0",
+      "type": [
+        "VerifiableCredential"
+      ],
+      "issuer": "did:hpass:19b0cf0d5fc7017dd66ddd2374fbd9b796d988aced083d709abbaa0f7480b474:55b065567f3d126e4521beb881e9624ec8068cb1dde64f88d5949725da72908e",
+      "issuanceDate": "2021-02-16T22:15:10Z",
+      "credentialSchema": {
+        "id": "did:hpass:19b0cf0d5fc7017dd66ddd2374fbd9b796d988aced083d709abbaa0f7480b474:55b065567f3d126e4521beb881e9624ec8068cb1dde64f88d5949725da72908e;id=nihId;version=0.2",
+        "type": "JsonSchemaValidator2018"
+      },
+      "credentialSubject": {
+        "ageRange": "25-34",
+        "gender": "male",
+        "id": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtoSQ4WEQW4NvGOd2BZQJiYU0LjFWI+Ch\n20/qFv7HSK34/L1Eehk6neiOs2LLW9RwuNzUZ3eqnu5bPQwYVMSwHlC+6JUK6B+qRjcYuMFFBB01\n3L4KUmSX/N3iMiWEZxEVsRyModIFl1vVz/HvdW3g6S5zT31t5PRPs0tF8tEespJAy8zJX+G8TiW8\n8z0qUNH/1IvHvc3yFe7sD+ZCF/UwSoM+2ek0peW1fdFKmF1w03OtVxn0hKGjl73a0Ilhf6DqphRR\ncUncyN5xBDBM5v4UypK02U5WIRo9Kx0zqeGOshfRdkPTt+jwaL1yQ7zOs/YGVWQT+Aa8brk7BNPP\ngZRXtQIDAQAB\n",
+        "issuer": {
+          "name": "Acme Corp"
+        },
+        "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtoSQ4WEQW4NvGOd2BZQJiYU0LjFWI+Ch\n20/qFv7HSK34/L1Eehk6neiOs2LLW9RwuNzUZ3eqnu5bPQwYVMSwHlC+6JUK6B+qRjcYuMFFBB01\n3L4KUmSX/N3iMiWEZxEVsRyModIFl1vVz/HvdW3g6S5zT31t5PRPs0tF8tEespJAy8zJX+G8TiW8\n8z0qUNH/1IvHvc3yFe7sD+ZCF/UwSoM+2ek0peW1fdFKmF1w03OtVxn0hKGjl73a0Ilhf6DqphRR\ncUncyN5xBDBM5v4UypK02U5WIRo9Kx0zqeGOshfRdkPTt+jwaL1yQ7zOs/YGVWQT+Aa8brk7BNPP\ngZRXtQIDAQAB\n",
+        "location": "US-FL",
+        "race": [
+          "Decline to state"
+        ],
+        "type": "id"
+      },
+      "proof": {
+        "created": "2021-02-16T22:15:10Z",
+        "creator": "did:hpass:19b0cf0d5fc7017dd66ddd2374fbd9b796d988aced083d709abbaa0f7480b474:55b065567f3d126e4521beb881e9624ec8068cb1dde64f88d5949725da72908e#key-1",
+        "nonce": "0f0b04ef-3832-444d-9cd4-7cd25ea42fd0",
+        "signatureValue": "MEUCIAZVwPIWzyiJZEEQQ0VCIfGr5h7sPp1hH70vlvaqFeUfAiEAjyoJV5sqkUC16VVGj4ix31t3tsajyeMJAy2saqN5fBw",
+        "type": "EcdsaSecp256r1Signature2019"
+      }
+    }
+  ]
+}

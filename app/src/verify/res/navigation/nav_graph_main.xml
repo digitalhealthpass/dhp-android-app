@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/nav_landing_graph">
+
+    <!-- region added graphs  -->
+    <include app:graph="@navigation/nav_landing_graph" />
+
+    <include app:graph="@navigation/nav_graph_home" />
+
+    <include app:graph="@navigation/nav_graph_credential" />
+
+    <include app:graph="@navigation/scan_permissions_graph" />
+
+    <include app:graph="@navigation/organizations_list_graph" />
+
+    <include app:graph="@navigation/org_details_nav_graph" />
+    <!--  endregion  -->
+
+    <!-- region global actions  -->
+    <action
+        android:id="@+id/global_action_pop_to_home"
+        app:destination="@id/nav_graph_home"
+        app:popUpTo="@id/nav_landing_graph"
+        app:popUpToInclusive="true" />
+
+    <action
+        android:id="@+id/global_action_credential_details"
+        app:destination="@id/nav_credential"
+        app:enterAnim="@anim/slide_right_in"
+        app:exitAnim="@anim/slide_left_out"
+        app:popEnterAnim="@anim/slide_left_in"
+        app:popExitAnim="@anim/slide_right_out" />
+
+    <action
+        android:id="@+id/global_action_credentials_for_upload"
+        app:destination="@+id/selectCredentialsFragment"
+        app:enterAnim="@anim/slide_right_in"
+        app:exitAnim="@anim/slide_left_out"
+        app:popEnterAnim="@anim/slide_left_in"
+        app:popExitAnim="@anim/slide_right_out" />
+
+    <action
+        android:id="@+id/global_action_contact_details"
+        app:destination="@id/contactDetailsFragment"
+        app:enterAnim="@anim/slide_right_in"
+        app:exitAnim="@anim/slide_left_out"
+        app:popEnterAnim="@anim/slide_left_in"
+        app:popExitAnim="@anim/slide_right_out" />
+
+    <action
+        android:id="@+id/global_action_to_scan_verify"
+        app:destination="@id/scanVerify"
+        app:enterAnim="@anim/slide_right_in"
+        app:exitAnim="@anim/slide_left_out"
+        app:popEnterAnim="@anim/slide_left_in"
+        app:popExitAnim="@anim/slide_right_out" />
+
+    <action
+        android:id="@+id/global_action_to_pin_frag"
+        app:destination="@id/pinFragment"
+        app:enterAnim="@anim/slide_in_up"
+        app:popExitAnim="@anim/slide_out_up" />
+
+    <action
+        android:id="@+id/global_action_to_privacy_frag"
+        app:destination="@id/privacyPolicyFragment"
+        app:enterAnim="@anim/slide_in_up"
+        app:popExitAnim="@anim/slide_out_up" />
+
+    <action
+        android:id="@+id/global_action_to_terms_frag"
+        app:destination="@id/termsFragment"
+        app:enterAnim="@anim/slide_in_up"
+        app:popExitAnim="@anim/slide_out_up" />
+
+    <action
+        android:id="@+id/global_action_to_tutorial_frag"
+        app:destination="@id/tutorialFragment"
+        app:enterAnim="@anim/slide_in_up"
+        app:popExitAnim="@anim/slide_out_up"
+        app:popUpTo="@id/tutorialFragment"
+        app:popUpToInclusive="true" />
+
+    <action
+        android:id="@+id/global_action_to_region_selection_frag"
+        app:destination="@id/regionSelectionFragment"
+        app:enterAnim="@anim/slide_in_up"
+        app:popExitAnim="@anim/slide_out_up"
+        app:popUpTo="@id/regionSelectionFragment"
+        app:popUpToInclusive="true" />
+
+    <action
+        android:id="@+id/global_action_to_scan_fragment"
+        app:destination="@id/navigation_scan_fragment"
+        app:enterAnim="@anim/slide_right_in"
+        app:exitAnim="@anim/slide_left_out"
+        app:popEnterAnim="@anim/slide_left_in"
+        app:popExitAnim="@anim/slide_right_out" />
+
+    <action
+        android:id="@+id/global_action_to_scanner_permissions_frag"
+        app:destination="@id/scan_permissions_graph"
+        app:enterAnim="@anim/slide_in_up"
+        app:popExitAnim="@anim/slide_out_up"
+        app:popUpToInclusive="true" />
+
+    <action
+        android:id="@+id/global_action_to_contacts_list_frag"
+        app:destination="@id/credentials_graph"
+        app:enterAnim="@anim/slide_in_up"
+        app:popExitAnim="@anim/slide_out_up"
+        app:popUpToInclusive="true" />
+
+    <!--  endregion global actions  -->
+
+    <fragment
+        android:id="@+id/navigation_scan_fragment"
+        android:name="com.merative.watson.healthpass.scan.ScanFragment"
+        android:label="" />
+
+    <fragment
+        android:id="@+id/navigation_settings_fragment"
+        android:name="com.merative.healthpass.ui.settings.SettingsFragment"
+        android:label="@string/settings_title">
+        <action
+            android:id="@+id/action_settings_to_pinSettings"
+            app:destination="@id/pinSettingsFragment"
+            app:enterAnim="@anim/slide_right_in"
+            app:exitAnim="@anim/slide_left_out"
+            app:popEnterAnim="@anim/slide_left_in"
+            app:popExitAnim="@anim/slide_right_out" />
+        <action
+            android:id="@+id/action_settings_to_resetCache"
+            app:destination="@id/resetCacheFragment"
+            app:enterAnim="@anim/slide_right_in"
+            app:exitAnim="@anim/slide_left_out"
+            app:popEnterAnim="@anim/slide_left_in"
+            app:popExitAnim="@anim/slide_right_out" />
+
+        <action
+            android:id="@+id/action_settings_to_kiosk"
+            app:destination="@id/kioskSettingsFragment"
+            app:enterAnim="@anim/slide_right_in"
+            app:exitAnim="@anim/slide_left_out"
+            app:popEnterAnim="@anim/slide_left_in"
+            app:popExitAnim="@anim/slide_right_out" />
+        <action
+            android:id="@+id/action_settings_to_sound"
+            app:destination="@id/soundSettingsFragment"
+            app:enterAnim="@anim/slide_right_in"
+            app:exitAnim="@anim/slide_left_out"
+            app:popEnterAnim="@anim/slide_left_in"
+            app:popExitAnim="@anim/slide_right_out" />
+
+        <action
+            android:id="@+id/global_action_to_third_party_frag"
+            app:destination="@id/thirdPartyNoticeFragment"
+            app:enterAnim="@anim/slide_in_up"
+            app:popExitAnim="@anim/slide_out_up" />
+    </fragment>
+
+    <!-- region initial views  -->
+    <fragment
+        android:id="@+id/termsFragment"
+        android:name="com.merative.healthpass.ui.terms.TermsFragment"
+        android:label="@string/title_terms_and_conditions" />
+
+    <fragment
+        android:id="@+id/privacyPolicyFragment"
+        android:name="com.merative.healthpass.ui.privacy.PrivacyPolicyFragment"
+        android:label="@string/privacy_policy" />
+
+    <fragment
+        android:id="@+id/thirdPartyNoticeFragment"
+        android:name="com.merative.healthpass.ui.thirdParty.ThirdPartyNoticeFragment"
+        android:label="@string/title_third_party_notices" />
+
+    <dialog
+        android:id="@+id/tutorialFragment"
+        android:name="com.merative.healthpass.ui.tutorial.TutorialFragment"
+        android:label="" />
+    <!--  endregion  -->
+
+    <fragment
+        android:id="@+id/scanVerify"
+        android:name="com.merative.healthpass.ui.scanVerify.ScanVerifyFragment"
+        android:label="" />
+
+    <fragment
+        android:id="@+id/consentFragment"
+        android:name="com.merative.healthpass.ui.contactDetails.consent.ConsentFragment"
+        android:label="">
+        <action
+            android:id="@+id/action_consentFragment_to_uploadCompleteFragment"
+            app:destination="@id/uploadCompleteFragment"
+            app:enterAnim="@anim/slide_right_in"
+            app:exitAnim="@anim/slide_left_out"
+            app:popEnterAnim="@anim/slide_left_in"
+            app:popExitAnim="@anim/slide_right_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/contactDetailsFragment"
+        android:name="com.merative.healthpass.ui.contactDetails.details.ContactDetailsFragment"
+        android:label=""
+        tools:layout="@layout/fragment_contact_details">
+        <action
+            android:id="@+id/action_contactDetailsFragment_to_contactAssociatedKeyFragment"
+            app:destination="@id/contactAssociatedKeyFragment"
+            app:enterAnim="@anim/slide_right_in"
+            app:exitAnim="@anim/slide_left_out"
+            app:popEnterAnim="@anim/slide_left_in"
+            app:popExitAnim="@anim/slide_right_out" />
+
+        <action
+            android:id="@+id/action_contactDetailsFragment_to_contactAssociatedDataFragment"
+            app:destination="@id/contactAssociatedDataFragment"
+            app:enterAnim="@anim/slide_right_in"
+            app:exitAnim="@anim/slide_left_out"
+            app:popEnterAnim="@anim/slide_left_in"
+            app:popExitAnim="@anim/slide_right_out" />
+
+        <action
+            android:id="@+id/action_contactDetailsFragment_to_consentRevokeFragment"
+            app:destination="@id/consentRevokeFragment"
+            app:enterAnim="@anim/slide_right_in"
+            app:exitAnim="@anim/slide_left_out"
+            app:popEnterAnim="@anim/slide_left_in"
+            app:popExitAnim="@anim/slide_right_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/contactAssociatedKeyFragment"
+        android:name="com.merative.healthpass.ui.contactDetails.asymmetricKey.AsymmetricKeyFragment"
+        android:label="@string/key_details_title"
+        tools:layout="@layout/frag_asymmetric_key" />
+
+    <fragment
+        android:id="@+id/contactAssociatedDataFragment"
+        android:name="com.merative.healthpass.ui.contactDetails.associatedData.AssociatedDataFragment"
+        android:label=""
+        tools:layout="@layout/frag_associated_data" />
+
+    <fragment
+        android:id="@+id/uploadCompleteFragment"
+        android:name="com.merative.healthpass.ui.contactDetails.uploadComplete.UploadCompleteFragment"
+        android:label="" />
+
+    <fragment
+        android:id="@+id/pinFragment"
+        android:name="com.merative.healthpass.ui.pin.PinFragment"
+        android:label="" />
+
+    <fragment
+        android:id="@+id/pinSettingsFragment"
+        android:name="com.merative.healthpass.ui.settings.pinSettings.PinSettingsFragment"
+        android:label="" />
+
+    <dialog
+        android:id="@+id/regionSelectionFragment"
+        android:name="com.merative.healthpass.ui.region.RegionSelectionFragment"
+        android:label="@string/region_title" />
+
+    <fragment
+        android:id="@+id/consentRevokeFragment"
+        android:name="com.merative.healthpass.ui.contactDetails.revoke.ConsentRevokeFragment" />
+
+    <fragment
+        android:id="@+id/resetCacheFragment"
+        android:name="com.merative.healthpass.ui.settings.reset.ResetCacheFragment"
+        android:label="@string/profile_reset_title" />
+
+    <fragment
+        android:id="@+id/scanResultsFragment"
+        android:name="com.merative.healthpass.ui.results.ScanResultsFragment"
+        android:label=""
+        tools:layout="@layout/fragment_scan_results" />
+
+    <fragment
+        android:id="@+id/kioskSettingsFragment"
+        android:name="com.merative.healthpass.ui.settings.kiosk.KioskSettingsFragment"
+        android:label="@string/kiosk_title" />
+
+    <fragment
+        android:id="@+id/soundSettingsFragment"
+        android:name="com.merative.healthpass.ui.settings.sound.SoundVibrationFragment"
+        android:label="@string/sound_vibration_title" />
+</navigation>

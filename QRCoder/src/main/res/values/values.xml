@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ScannerOverlay">
+        <attr name="square_width" format="dimension" />
+        <attr name="square_height" format="dimension" />
+        <attr name="line_color" format="color|reference" />
+        <attr name="line_width" format="dimension" />
+        <attr name="line_length" format="dimension" />
+        <attr name="overlay_color" format="color|reference" />
+        <attr name="text" format="string|reference" />
+        <attr name="text_color" format="color|reference" />
+        <attr name="text_size" format="dimension" />
+    </declare-styleable>
+</resources>

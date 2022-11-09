@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="15dp">
+
+        <ImageView
+            android:id="@+id/org_imageview"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/square_with_rounded_corner"
+            android:contentDescription="@null"
+            android:padding="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@mipmap/ic_hp_launcher" />
+
+        <TextView
+            android:id="@+id/org_name_header"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/plex_sans_medium"
+            android:gravity="center"
+            android:textColor="@color/textLabels"
+            android:textSize="@dimen/font_header"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/org_imageview"
+            tools:text="@string/app_name" />
+
+        <TextView
+            android:id="@+id/org_type_subheader"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="2dp"
+            android:gravity="center"
+            android:textColor="@color/subTextLabels"
+            android:textSize="@dimen/font_body"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/org_name_header"
+            tools:text="@string/app_long_name" />
+
+        <TextView
+            android:id="@+id/org_issue_date_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:textColor="@color/subTextLabels"
+            android:textSize="@dimen/font_secondary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/org_type_subheader"
+            tools:text="@string/result_issuedFormat" />
+
+        <TextView
+            android:id="@+id/org_exp_date_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="2dp"
+            android:gravity="center"
+            android:textColor="@color/subTextLabels"
+            android:textSize="@dimen/font_secondary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/org_issue_date_tv"
+            tools:text="@string/result_expiresDate" />
+
+        <TextView
+            android:id="@+id/org_details_rv_header"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="34dp"
+            android:text="@string/contact_section_title2"
+            android:textColor="@color/subTextLabels"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/org_details_rv"
+            app:layout_constraintTop_toBottomOf="@id/org_exp_date_tv" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/org_details_rv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/square_with_rounded_corner"
+            android:elevation="4dp"
+            android:nestedScrollingEnabled="false"
+            android:paddingHorizontal="@dimen/activity_horizontal_margin"
+            app:layout_constraintBottom_toTopOf="@id/barrier_begin_top"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/org_details_rv_header"
+            tools:itemCount="2"
+            tools:listitem="@layout/simple_info_recycler_item_view" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier_begin_top"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:barrierDirection="top"
+            app:constraint_referenced_ids="org_begin_scan_button,org_txt_expired" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier_begin_bottom"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="org_begin_scan_button,org_txt_expired" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/org_begin_scan_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:layout_marginVertical="20dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:gravity="center"
+            android:text="@string/OrganizationDetails_organization_selection_button1"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:visibility="visible"
+            app:iconGravity="end"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/org_details_rv" />
+
+        <TextView
+            android:id="@+id/org_txt_expired"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:layout_marginVertical="20dp"
+            android:background="@drawable/square_with_rounded_corner"
+            android:paddingHorizontal="@dimen/activity_horizontal_margin"
+            android:paddingVertical="11dp"
+            android:text="@string/OrganizationDetails_organization_error_message"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/org_details_rv" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/org_discard_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:layout_marginVertical="20dp"
+            android:backgroundTint="@color/red"
+            android:gravity="center"
+            android:text="@string/OrganizationDetails_discard_organization_title"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textStyle="normal"
+            app:backgroundTint="@color/cardBackground"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/barrier_begin_bottom" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

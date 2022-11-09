@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:nestedScrollingEnabled="true"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="15dp">
+
+        <ImageView
+            android:id="@+id/cd_imageview"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/square_with_rounded_corner"
+            android:contentDescription="@null"
+            android:padding="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@mipmap/ic_hp_launcher" />
+
+        <TextView
+            android:id="@+id/cd_contact_name_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/plex_sans_medium"
+            android:gravity="center"
+            android:textColor="@color/textLabels"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cd_imageview"
+            tools:text="@string/app_name" />
+
+        <TextView
+            android:id="@+id/cd_contact_name_subheader_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="2dp"
+            android:gravity="center"
+            android:textColor="@color/subTextLabels"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cd_contact_name_textview"
+            tools:text="@string/app_long_name" />
+
+        <LinearLayout
+            android:id="@+id/cd_contact_buttons_holder_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cd_contact_name_subheader_textview">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/cd_call_button"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="12dp"
+                android:gravity="center"
+                android:minWidth="100dp"
+                android:text="@string/contact_call"
+                android:textAllCaps="false"
+                android:textSize="13dp"
+                android:textStyle="normal"
+                app:icon="@android:drawable/stat_sys_phone_call"
+                app:iconGravity="textTop"
+                app:iconTint="@color/colorPrimary" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/cd_email_button"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="12dp"
+                android:gravity="center"
+                android:minWidth="100dp"
+                android:text="@string/contact_email"
+                android:textSize="13dp"
+                android:textStyle="normal"
+                app:cornerRadius="10dp"
+                app:icon="@android:drawable/ic_dialog_email"
+                app:iconGravity="textTop"
+                app:iconTint="@color/colorPrimary" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/cd_website_button"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:drawableTint="@color/colorPrimary"
+                android:gravity="center"
+                android:minWidth="100dp"
+                android:text="@string/contact_website"
+                android:textAllCaps="false"
+                android:textSize="13dp"
+                android:textStyle="normal"
+                app:cornerRadius="10dp"
+                app:icon="@drawable/ic_website"
+                app:iconGravity="textTop"
+                app:iconTint="@color/colorPrimary" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/cd_download_layout_header"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="34dp"
+            android:text="@string/cd_subheader_downloaded_hp"
+            android:textColor="@color/subTextLabels"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cd_contact_buttons_holder_layout" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/cd_downloaded_passes_rv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="7dp"
+            android:background="@drawable/square_with_rounded_corner"
+            android:elevation="4dp"
+            android:nestedScrollingEnabled="false"
+            android:paddingHorizontal="@dimen/activity_horizontal_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cd_download_layout_header"
+            tools:itemCount="2"
+            tools:listitem="@layout/downloaded_passes_rv_item" />
+
+        <TextView
+            android:id="@+id/cd_upload_layout_header"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="34dp"
+            android:text="@string/contact_section_title1"
+            android:textColor="@color/subTextLabels"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cd_downloaded_passes_rv" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/cd_uploaded_passes_rv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="7dp"
+            android:background="@drawable/square_with_rounded_corner"
+            android:elevation="4dp"
+            android:nestedScrollingEnabled="false"
+            android:paddingHorizontal="@dimen/activity_horizontal_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cd_upload_layout_header"
+            tools:itemCount="1"
+            tools:listitem="@layout/simple_text_with_icon_rv_item" />
+
+        <TextView
+            android:id="@+id/cd_first_rv_header"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="34dp"
+            android:text="@string/contact_section_title2"
+            android:textColor="@color/subTextLabels"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cd_uploaded_passes_rv" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/cd_first_rv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/square_with_rounded_corner"
+            android:elevation="4dp"
+            android:nestedScrollingEnabled="false"
+            android:paddingHorizontal="@dimen/margin_10"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cd_first_rv_header"
+            tools:itemCount="2"
+            tools:listitem="@layout/simple_info_recycler_item_view" />
+
+        <TextView
+            android:id="@+id/cd_second_rv_header"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="34dp"
+            android:text="@string/contact_section_title3"
+            android:textAllCaps="true"
+            android:textColor="@color/subTextLabels"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cd_first_rv" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/cd_second_rv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/square_with_rounded_corner"
+            android:elevation="4dp"
+            android:nestedScrollingEnabled="false"
+            android:paddingHorizontal="@dimen/margin_10"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cd_second_rv_header"
+            tools:itemCount="2"
+            tools:listitem="@layout/simple_info_recycler_item_view" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/cd_associated_key_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/margin_10"
+            android:enabled="false"
+            android:gravity="start|center_vertical"
+            android:text="@string/cd_associated_key"
+            android:textColor="@color/textLabels"
+            app:icon="@drawable/ic_chevron_right"
+            app:iconGravity="end"
+            app:iconTint="@color/subTextLabels"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cd_second_rv" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/cd_associated_data_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/margin_10"
+            android:gravity="start|center_vertical"
+            android:text="@string/cd_associated_data"
+            android:textAllCaps="false"
+            android:textColor="@color/textLabels"
+            app:icon="@drawable/ic_chevron_right"
+            app:iconGravity="end"
+            app:iconTint="@color/subTextLabels"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cd_associated_key_button" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/cd_delete_contact_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="20dp"
+            android:gravity="start|center_vertical"
+            android:text="@string/contact_delete_title"
+            android:textAllCaps="false"
+            android:textColor="@color/red"
+            android:textStyle="normal"
+            app:backgroundTint="@color/cardBackground"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cd_associated_data_button" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

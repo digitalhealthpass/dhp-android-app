@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.merative.healthpass">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <application
+        android:name="com.merative.healthpass.common.App"
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_hp_launcher"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:roundIcon="@mipmap/ic_hp_launcher_round"
+        android:supportsRtl="false"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+
+        <activity
+            android:name="com.merative.healthpass.ui.debug.DebugActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.merative.healthpass.ui.mainActivity.MainActivity"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <!--use this for deep linking only-->
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <action android:name="android.intent.action.VIEW" />
+
+                <data
+                    android:host="open.dhpwallet.app"
+                    android:pathPrefix="/registration"
+                    android:scheme="https" />
+            </intent-filter>
+
+            <intent-filter>
+                <!--use this for app launcher only-->
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <!-- this is needed for apps like whatsapp, it doesn't provide extension, so you can't add path  -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.OPENABLE" />
+
+                <data
+                    android:mimeType="application/octet-stream"
+                    android:scheme="content" />
+            </intent-filter>
+
+            <!-- this is needed for apps like explorer -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.OPENABLE" />
+
+                <data android:scheme="file" />
+                <data android:scheme="content" />
+                <data android:mimeType="*/*" />
+                <!--
+                    Work around Android's ugly primitive PatternMatcher
+                    implementation that can't cope with finding a . early in
+                    the path unless it's explicitly matched.
+                -->
+                <data android:host="*" />
+                <data android:pathPattern=".*\\.w3c" />
+                <data android:pathPattern=".*\\..*\\.w3c" />
+                <data android:pathPattern=".*\\..*\\..*\\.w3c" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.w3c" />
+                <!-- keep going if you need more -->
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.OPENABLE" />
+
+                <data android:scheme="file" />
+                <data android:scheme="content" />
+                <data android:mimeType="*/*" />
+                <!--
+                    Work around Android's ugly primitive PatternMatcher
+                    implementation that can't cope with finding a . early in
+                    the path unless it's explicitly matched.
+                -->
+                <data android:host="*" />
+                <data android:pathPattern=".*\\.smart-health-card" />
+                <data android:pathPattern=".*\\..*\\.smart-health-card" />
+                <data android:pathPattern=".*\\..*\\..*\\.smart-health-card" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.smart-health-card" />
+                <!-- keep going if you need more -->
+            </intent-filter>
+
+            <!--This is added to handle a deep link -->
+            <nav-graph android:value="@navigation/nav_graph_main" />
+
+        </activity>
+
+        <!-- authority name must match the name used while sharing ContextExt#shareFile-->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/fileprovider" />
+        </provider>
+    </application>
+
+</manifest>

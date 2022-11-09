@@ -1,0 +1,29 @@
+<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Preference
+        android:key="@string/key_debug_build_info"
+        android:summary=""
+        android:title="App information"
+        app:selectable="false" />
+
+    <PreferenceCategory
+        android:summary="These are NOT app features, use with caution"
+        android:layout="@layout/preference_category_title"
+        app:title="Developer options">
+
+        <Preference
+            android:key="@string/key_reset_fti"
+            android:summary="This will reset any first time experience for the user"
+            android:title="Reset First Time Experience" />
+
+        <!-- default value is true -->
+        <SwitchPreference
+            android:key="disable_root_check"
+            android:summary="Disable the root check. you must restart the app"
+            android:title="Disable the root check"
+            app:defaultValue="false" />
+
+    </PreferenceCategory>
+
+</androidx.preference.PreferenceScreen>

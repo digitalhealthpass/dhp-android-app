@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:paddingBottom="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/text_margin"
+            android:layout_marginEnd="@dimen/text_margin"
+            android:gravity="center"
+            android:text="@string/add_wallet_item"
+            android:textColor="@color/textLabels"
+            android:textSize="@dimen/font_title_header"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/text_margin"
+            android:layout_marginEnd="@dimen/text_margin"
+            android:layout_marginTop="@dimen/margin_20"
+            android:gravity="center"
+            android:text="@string/choose_a_method_to_start_adding_items_to_the_wallet"
+            android:textColor="@color/textLabels"
+            android:textSize="18sp" />
+
+        <com.merative.healthpass.ui.common.custom.QrCodeMethod
+            android:id="@+id/btn_qr_camera"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/minHeight"
+            app:qcm_icon="@drawable/ic_qr_code_scanner_black_24dp"
+            app:qcm_right_text="Scan a QR code" />
+
+        <com.merative.healthpass.ui.common.custom.QrCodeMethod
+            android:id="@+id/btn_qr_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:qcm_icon="@drawable/ic_wallpaper_24px"
+            app:qcm_right_text="QR code from Photo Library"
+            app:qcm_show_divider="false" />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

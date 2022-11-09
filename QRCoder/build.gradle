@@ -1,0 +1,76 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+}
+
+android {
+    compileSdkVersion 30
+
+    defaultConfig {
+        minSdkVersion 28
+        targetSdkVersion 30
+        versionCode 1
+        versionName "0.1"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+
+        setProperty("archivesBaseName", "qrCoder_v$versionCode($versionName)")
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    implementation "androidx.appcompat:appcompat:$app_compat"
+    //used to show the dialog
+    implementation "com.google.android.material:material:$mat_ver"
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+
+    testImplementation 'junit:junit:4.13.1'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    //kotlin coroutine
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "androidx.core:core-ktx:$ktx_extension"
+
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.fragment:fragment-ktx:$fragment"
+
+    //barcode
+    implementation "com.google.zxing:core:$zxing_code"
+    implementation "androidx.legacy:legacy-support-v4:$legacy_support"
+    implementation "net.lingala.zip4j:zip4j:$zip4"
+
+    // Barcode model
+    implementation "com.google.mlkit:barcode-scanning:$ml_kit"
+
+    // CameraX
+    implementation "androidx.camera:camera-camera2:$camera_x"
+    implementation "androidx.camera:camera-lifecycle:$camera_x"
+    implementation "androidx.camera:camera-view:$camera_x_view"
+
+    // Material
+    implementation "com.google.android.material:material:$mat_ver"
+}

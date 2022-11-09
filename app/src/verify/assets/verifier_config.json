@@ -1,0 +1,809 @@
+{
+  "type": "verifier-configuration-content-collection",
+  "payload": [
+    {
+      "id": "3e9b52cb-3177-4957-ab82-0384090637f6",
+      "created_by": "hpass.default_verifier",
+      "created_at": "2021-09-06T16:49:06Z",
+      "updated_at": "2021-09-06T16:49:06Z",
+      "version": "2.0.5",
+      "name": "Complete ruleset 1 (for supported credential types), expiration check (for unsupported types)",
+      "customer": "IBM",
+      "customerId": "IBM",
+      "organization": "IBM",
+      "organizationId": "IBM",
+      "label": "Open Digital Health Pass Catalog",
+      "offline": true,
+      "refresh": 86400,
+      "verifierType": "Organization",
+      "configuration": {
+        "IDHP": {
+          "metrics": [
+            {
+              "name": "Counts verifications by result, issuer, type",
+              "extract": {
+                "issuerDID": "issuer",
+                "credentialType": "type.[2]"
+              },
+              "countBy": {
+                "scan": true,
+                "scanResult": true,
+                "extract": true
+              }
+            }
+          ],
+          "display": [
+            {
+              "version": "2.0.1",
+              "name": "Display only minimum identity (name, date of birth)",
+              "customerId": "IBM",
+              "type": "IDHP",
+              "category": "generic",
+              "fields": [
+                {
+                  "field": "credentialSubject.recipient.givenName",
+                  "displayValue": {
+                    "en": "First Name",
+                    "de": "Vorname"
+                  }
+                },
+                {
+                  "field": "credentialSubject.recipient.familyName",
+                  "displayValue": {
+                    "en": "Surname",
+                    "de": "Nachname"
+                  }
+                },
+                {
+                  "field": "credentialSubject.recipient.birthDate",
+                  "displayValue": {
+                    "en": "Date of Birth",
+                    "de": "Geburtsdatum"
+                  }
+                }
+              ],
+              "id": "cc354dd0-2a8b-456c-a3eb-dde94194c60e"
+            }
+          ],
+          "trust-lists": [
+            {
+              "version": "1.0.0",
+              "name": "Trust all issuers known to Open Digital Health Pass",
+              "items": [
+                {
+                  "purpose": "",
+                  "publisher": "IBM",
+                  "schemas": [
+                  ],
+                  "issuers": [
+                  ]
+                }
+              ],
+              "type": "IDHP",
+              "id": "368bfc8c-c171-49bc-95c0-2f242db8a9d2"
+            }
+          ],
+          "rule-sets": [
+            {
+              "id": "a40aef96-f956-4101-a26a-dca03b60806f",
+              "version": "3.0.1",
+              "name": "Perform required credential checks",
+              "type": "IDHP",
+              "category": "generic",
+              "rules": [
+                {
+                  "version": "2.0.2",
+                  "name": "Ensure its a supported credential",
+                  "predicate": "{\"if\":[{\"or\":[{\"in\":[\"Vaccination\",{\"var\":\"payload.type\"}]},{\"in\":[\"Test\",{\"var\":\"payload.type\"}]},{\"in\":[\"Temperature\",{\"var\":\"payload.type\"}]},{\"in\":[\"Pass\",{\"var\":\"payload.type\"}]}]},true,\"unknown\"]}",
+                  "type": "IDHP",
+                  "category": "generic",
+                  "id": "2c638c39-6568-40f7-a9ad-3a4cceb7908d"
+                },
+                {
+                  "version": "2.0.2",
+                  "name": "Check the credential is not expired",
+                  "predicate": "{\"if\":[{\"var\":\"payload.expirationDate\"},{\"not-after\":[{\"plusTime\":[{\"var\":\"external.validationClock\"},0,\"day\"]},{\"plusTime\":[{\"var\":\"payload.expirationDate\"},0,\"day\"]}]}, true]}",
+                  "type": "VC",
+                  "category": "generic",
+                  "id": "b7b9b663-080e-41ac-96dd-1109d8c09f9d"
+                }
+              ]
+            },
+            {
+              "id": "869546c8-816b-4d85-9fd7-1728ecb8c7c1",
+              "version": "2.0.2",
+              "name": "Verify a Vaccination (signature w/ rules)",
+              "type": "IDHP",
+              "category": "vaccination",
+              "rules": [
+                {
+                  "version": "2.0.1",
+                  "name": "Check it is 14 to 365 days since getting the vaccination",
+                  "predicate": "{\"if\": [{\"in\": [\"Vaccination\",{\"var\": \"payload.type\"}]},{\"not-after\": [{\"plusTime\": [{\"var\": \"payload.credentialSubject.dateOfVaccination\"},14,\"day\"]},{\"plusTime\": [{\"var\": \"external.validationClock\"},0,\"day\"]},{\"plusTime\": [{\"var\": \"payload.credentialSubject.dateOfVaccination\"},365,\"day\"]}]}, true]}",
+                  "type": "IDHP",
+                  "category": "vaccination",
+                  "id": "e4cc69fc-d18c-4f5a-b149-6b71dfd8c5ef"
+                },
+                {
+                  "version": "2.0.0",
+                  "name": "Check for approved vaccine",
+                  "predicate": "{\"if\":[{\"in\":[\"Vaccination\",{\"var\":\"payload.type\"}]},{\"in\":[{\"var\":\"payload.credentialSubject.medicinalProductCode\"},[\"207\",\"208\",\"210\",\"212\"]]},true]}",
+                  "type": "IDHP",
+                  "category": "vaccination",
+                  "id": "f510ebfa-29ee-4b21-a8b9-bae4a39fd873"
+                },
+                {
+                  "version": "2.0.0",
+                  "name": "Check for completed vaccination cycle",
+                  "predicate": "{\"if\":[{\"in\":[\"Vaccination\",{\"var\":\"payload.type\"}]},{\">=\":[{\"var\":\"payload.credentialSubject.doseNumber\"},{\"var\":\"payload.credentialSubject.dosesPerCycle\"}]},true]}",
+                  "type": "IDHP",
+                  "category": "vaccination",
+                  "id": "9f40f334-13bc-4eb3-8afe-04e15ff4db95"
+                }
+              ]
+            },
+            {
+              "id": "1eb7449a-19b6-48f0-9b47-f929b0903793",
+              "version": "2.0.3",
+              "name": "Verify a Test (signature w/ rules)",
+              "type": "IDHP",
+              "category": "test",
+              "rules": [
+                {
+                  "version": "2.0.1",
+                  "name": "Check it is less than 72 hours since getting the test",
+                  "predicate": "{\"if\": [{\"in\": [\"Test\",{\"var\": \"payload.type\"}]},{\"not-after\": [{\"plusTime\": [{\"var\": \"payload.credentialSubject.dateOfSample\"},0,\"day\"]},{\"plusTime\": [{\"var\": \"external.validationClock\"},0,\"day\"]},{\"plusTime\": [{\"var\": \"payload.credentialSubject.dateOfSample\"},72,\"hour\"]}]}, true]}",
+                  "type": "IDHP",
+                  "category": "test",
+                  "id": "964f8d1c-2f43-4c79-b7a7-c76dae23166e"
+                },
+                {
+                  "version": "2.0.1",
+                  "name": "Check for negative test result",
+                  "predicate": "{\"if\": [{\"in\": [\"Test\",{\"var\": \"payload.type\"}]},{\"===\": [{\"var\": \"payload.credentialSubject.testResult\"},\"Not detected\"]}, true]}",
+                  "type": "IDHP",
+                  "category": "test",
+                  "id": "061c04e2-c773-4193-98f4-cda8dd3cc2e2"
+                },
+                {
+                  "version": "2.0.1",
+                  "name": "Check for approved test",
+                  "predicate": "{\"if\":[{\"in\":[\"Test\",{\"var\":\"payload.type\"}]},{\"in\":[{\"var\":\"payload.credentialSubject.testType\"},[\"50548-7\",\"68993-5\",\"82159-5\",\"94306-8\",\"94307-6\",\"94308-4\",\"94309-2\",\"94500-6\",\"94502-2\",\"94503-0\",\"94504-8\",\"94507-1\",\"94508-9\",\"94531-1\",\"94533-7\",\"94534-5\",\"94547-7\",\"94558-4\",\"94559-2\",\"94562-6\"]]},true]}",
+                  "type": "IDHP",
+                  "category": "test",
+                  "id": "d4c09ae0-7653-4701-8cbb-6ad2847408d8"
+                }
+              ]
+            },
+            {
+              "id": "54b3bf7d-ca84-45dc-a391-25bf7a80b998",
+              "version": "2.0.1",
+              "name": "Verify a Temperature Scan (signature w/ rules)",
+              "type": "IDHP",
+              "category": "temperature",
+              "rules": [
+                {
+                  "version": "2.0.0",
+                  "name": "Check it is less than 1 hour since taking the temperature",
+                  "predicate": "{\"if\": [{\"in\": [\"Temperature\",{\"var\": \"payload.type\"}]},{\"not-after\": [{\"plusTime\": [{\"var\": \"payload.credentialSubject.date\"},0,\"day\"]},{\"plusTime\": [{\"var\": \"external.validationClock\"},0,\"day\"]},{\"plusTime\": [{\"var\": \"payload.credentialSubject.date\"},1,\"hour\"]}]}, true]}",
+                  "type": "IDHP",
+                  "category": "temperature",
+                  "id": "d4ebc3c4-1287-42a4-87d8-4a625c70f66c"
+                },
+                {
+                  "version": "2.0.0",
+                  "name": "Check that the temperature is normal (F)",
+                  "predicate": "{\"if\":[{\"and\":[{\"in\":[\"Temperature\",{\"var\":\"payload.type\"}]},{\"in\":[{\"var\":\"payload.credentialSubject.units\"},[\"F\"]]}]},{\"<\":[{\"var\":\"payload.credentialSubject.temperature\"},100.4]},true]}",
+                  "type": "IDHP",
+                  "category": "temperature",
+                  "id": "1fb34600-6da9-43fe-b36c-0d8cdb5ff5dc"
+                },
+                {
+                  "version": "2.0.0",
+                  "name": "Check that the temperature is normal (C)",
+                  "predicate": "{\"if\":[{\"and\":[{\"in\":[\"Temperature\",{\"var\":\"payload.type\"}]},{\"in\":[{\"var\":\"payload.credentialSubject.units\"},[\"F\"]]}]},{\"<\":[{\"var\":\"payload.credentialSubject.temperature\"},37.5]},true]}",
+                  "type": "IDHP",
+                  "category": "temperature",
+                  "id": "c580b864-88f6-49d7-9c47-67d0545bd194"
+                }
+              ]
+            },
+            {
+              "id": "c8d65505-c403-4210-b1eb-b6fb8aec3399",
+              "version": "2.0.0",
+              "name": "Verify a Pass (signature w/ rules)",
+              "type": "IDHP",
+              "category": "pass",
+              "rules": [
+                {
+                  "version": "2.0.0",
+                  "name": "Check it is less than 24 hours since getting the pass",
+                  "predicate": "{\"if\": [{\"in\": [\"Pass\",{\"var\": \"payload.type\"}]},{\"not-after\": [{\"plusTime\": [{\"var\": \"payload.credentialSubject.date\"},0,\"day\"]},{\"plusTime\": [{\"var\": \"external.validationClock\"},0,\"day\"]},{\"plusTime\": [{\"var\": \"payload.credentialSubject.date\"},24,\"hour\"]}]}, true]}",
+                  "type": "IDHP",
+                  "category": "pass",
+                  "id": "6bd99d01-0425-4dd0-bacb-fa626faa6ab0"
+                },
+                {
+                  "version": "2.0.0",
+                  "name": "Check for a pass status",
+                  "predicate": "{\"if\": [{\"in\": [\"Pass\",{\"var\": \"payload.type\"}]},{\"===\": [{\"var\": \"payload.credentialSubject.status\"},\"Pass\"]}, true]}",
+                  "type": "IDHP",
+                  "category": "pass",
+                  "id": "0fc97f64-e173-4a3e-98f1-2997cb385ce8"
+                }
+              ]
+            }
+          ]
+        },
+        "DCC": {
+          "metrics": [
+            {
+              "name": "Counts verifications by result, issuer",
+              "extract": {
+                "issuerName": "*.[0].is"
+              },
+              "countBy": {
+                "scan": true,
+                "scanResult": true,
+                "extract": true
+              }
+            }
+          ],
+          "display": [
+            {
+              "version": "2.0.0",
+              "name": "Display only minimum identity (name, date of birth)",
+              "customerId": "IBM",
+              "type": "DCC",
+              "category": "generic",
+              "fields": [
+                {
+                  "field": "JSON.nam.gn",
+                  "displayValue": {
+                    "en": "First Name",
+                    "de": "Vorname"
+                  }
+                },
+                {
+                  "field": "JSON.nam.fn",
+                  "displayValue": {
+                    "en": "Surname",
+                    "de": "Nachname"
+                  }
+                },
+                {
+                  "field": "JSON.dob",
+                  "displayValue": {
+                    "en": "Date of Birth",
+                    "de": "Geburtsdatum"
+                  }
+                }
+              ],
+              "id": "ac85615b-1bbf-4a51-b637-d614df0100fd"
+            }
+          ],
+          "trust-lists": [
+            {
+              "version": "1.0.0",
+              "name": "Trust all issuers registered in the EU Gateway",
+              "items": [
+                {
+                  "purpose": "",
+                  "publisher": "IBM",
+                  "schemas": [
+                  ],
+                  "issuers": [
+                  ]
+                }
+              ],
+              "type": "DCC",
+              "id": "51849ba8-2c2c-495c-938f-e4043e1dafd8"
+            }
+          ],
+          "rule-sets": [
+            {
+              "id": "825c6cd0-9133-45bf-a74c-bbe00e9a4b5c",
+              "version": "2.0.0",
+              "name": "Perform required credential checks",
+              "type": "DCC",
+              "category": "generic",
+              "rules": [
+                {
+                  "version": "2.0.1",
+                  "name": "Ensure its a supported credential",
+                  "predicate": "{\"if\":[{\"or\":[{\"var\":\"payload.v.0\"},{\"var\":\"payload.t.0\"},{\"var\":\"payload.r.0\"}]}, true, false]}",
+                  "type": "DCC",
+                  "category": "generic",
+                  "id": "db382c67-1e83-48ac-8025-08549760927a"
+                }
+              ]
+            },
+            {
+              "id": "781db41b-9512-4261-a789-d253887a8e25",
+              "version": "2.0.1",
+              "name": "Verify a Vaccination (signature w/ rules)",
+              "type": "DCC",
+              "category": "vaccination",
+              "rules": [
+                {
+                  "version": "2.0.1",
+                  "name": "Check it is 14 to 365 days since getting the vaccination",
+                  "predicate": "{\"if\": [{\"var\": \"payload.v.0\"},{\"not-after\": [{\"plusTime\": [{\"var\": \"payload.v.0.dt\"},14,\"day\"]},{\"plusTime\": [{\"var\": \"external.validationClock\"},0,\"day\"]},{\"plusTime\": [{\"var\": \"payload.v.0.dt\"},365,\"day\"]}]}, true]}",
+                  "type": "DCC",
+                  "category": "vaccination",
+                  "id": "bdc63070-4149-4dac-90cf-d8204fc1cdaa"
+                },
+                {
+                  "version": "2.0.0",
+                  "name": "Check for approved vaccine",
+                  "predicate": "{\"if\": [{\"var\": \"payload.v.0\"},{\"in\": [{\"var\": \"payload.v.0.mp\"},[\"EU/1/20/1528\",\"EU/1/20/1507\",\"EU/1/21/1529\",\"EU/1/20/1525\"]]}, true]}",
+                  "type": "DCC",
+                  "category": "vaccination",
+                  "id": "bae77b15-382a-4a2a-b15e-16d85bd79a87"
+                },
+                {
+                  "version": "2.0.1",
+                  "name": "Check for single vaccination record",
+                  "predicate": "{\"if\": [{\"var\": \"payload.v.0\"},{\"!\": [{\"var\": \"payload.v.1\"}]}, true]}",
+                  "type": "DCC",
+                  "category": "vaccination",
+                  "id": "07bad43c-ff7e-4eac-a951-9152e07d951f"
+                },
+                {
+                  "version": "2.0.0",
+                  "name": "Check for completed vaccination cycle",
+                  "predicate": "{\"if\": [{\"var\": \"payload.v.0\"},{\">=\": [{\"var\": \"payload.v.0.dn\"},{\"var\": \"payload.v.0.sd\"}]}, true]}",
+                  "type": "DCC",
+                  "category": "vaccination",
+                  "id": "1edb7c1f-effb-46fa-a337-4a0ca33fdcfb"
+                }
+              ]
+            },
+            {
+              "id": "d7b98c72-3160-43e2-b3d5-cc5d6d3d1059",
+              "version": "2.0.1",
+              "name": "Verify a Test (signature w/ rules including 72 hour check)",
+              "type": "DCC",
+              "category": "test",
+              "rules": [
+                {
+                  "version": "2.0.1",
+                  "name": "Check it is less than 72 hours since getting the test",
+                  "predicate": "{\"if\": [{\"var\": \"payload.t.0\"},{\"not-after\": [{\"plusTime\": [{\"var\": \"payload.t.0.sc\"},0,\"day\"]},{\"plusTime\": [{\"var\": \"external.validationClock\"},0,\"day\"]},{\"plusTime\": [{\"var\": \"payload.t.0.sc\"},72,\"hour\"]}]}, true]}",
+                  "type": "DCC",
+                  "category": "test",
+                  "id": "5b38d298-e257-4960-92f5-6c3697af0bb9"
+                },
+                {
+                  "version": "2.0.1",
+                  "name": "Check for approved test",
+                  "predicate": "{\"if\": [{\"var\": \"payload.t.0\"},{\"in\": [{\"var\": \"payload.t.0.tt\"},[\"LP6464-4\",\"LP217198-3\"]]}, true]}",
+                  "type": "DCC",
+                  "category": "test",
+                  "id": "28496945-624b-4485-b058-c68b6c912f5c"
+                },
+                {
+                  "version": "2.0.1",
+                  "name": "Check for negative test result",
+                  "predicate": "{\"if\": [{\"var\": \"payload.t.0\"},{\"===\": [{\"var\": \"payload.t.0.tr\"},\"260415000\"]}, true]}",
+                  "type": "DCC",
+                  "category": "test",
+                  "id": "74bcaa71-cdfa-41a9-a2cf-a383d071b5b3"
+                },
+                {
+                  "version": "2.0.0",
+                  "name": "Check for single test record",
+                  "predicate": "{\"if\": [{\"var\": \"payload.t.0\"},{\"!\": [{\"var\": \"payload.t.1\"}]}, true]}",
+                  "type": "DCC",
+                  "category": "test",
+                  "id": "d25301aa-ff49-4408-ac09-840315736156"
+                }
+              ]
+            },
+            {
+              "id": "41c5c4c2-50f9-475f-ab05-82764b9b52be",
+              "version": "2.0.1",
+              "name": "Verify a Recovery (signature w/ rules)",
+              "type": "DCC",
+              "category": "recovery",
+              "rules": [
+                {
+                  "version": "2.0.0",
+                  "name": "Check for single recovery record",
+                  "predicate": "{\"if\": [{\"var\": \"payload.r.0\"},{\"!\": [{\"var\": \"payload.r.1\"}]}, true]}",
+                  "type": "DCC",
+                  "category": "recovery",
+                  "id": "bf7ff58b-c0fb-40ae-9cd0-18847f9cc91f"
+                },
+                {
+                  "version": "2.0.0",
+                  "name": "Check current date is within the covered dates",
+                  "predicate": "{\"if\": [{\"var\": \"payload.r.0\"},{\"not-after\": [{\"plusTime\": [{\"var\": \"payload.r.0.df\"},0,\"day\"]},{\"plusTime\": [{\"var\": \"external.validationClock\"},0,\"day\"]},{\"plusTime\": [{\"var\": \"payload.r.0.du\"},0,\"day\"]}]}, true]}",
+                  "type": "DCC",
+                  "category": "recovery",
+                  "id": "33a70092-c30b-49ba-ab25-c53c7b12d918"
+                },
+                {
+                  "version": "2.0.0",
+                  "name": "Check for COVID-19",
+                  "predicate": "{\"if\": [{\"var\": \"payload.r.0\"},{\"===\": [{\"var\": \"payload.r.0.tg\"},\"840539006\"]}, true]}",
+                  "type": "DCC",
+                  "category": "recovery",
+                  "id": "84cf3eb7-48f5-41f6-8ffe-197b5244cb19"
+                }
+              ]
+            }
+          ]
+        },
+        "VC": {
+          "metrics": [
+            {
+              "name": "Counts verifications by result, issuer, type",
+              "extract": {
+                "issuerDID": "issuer",
+                "credentialType": "type.0"
+              },
+              "countBy": {
+                "scan": true,
+                "scanResult": true,
+                "extract": true
+              }
+            }
+          ],
+          "display": [
+          ],
+          "trust-lists": [
+            {
+              "version": "1.0.0",
+              "name": "Trust all issuers known to Open Digital Health Pass",
+              "items": [
+                {
+                  "purpose": "",
+                  "publisher": "IBM",
+                  "schemas": [
+                  ],
+                  "issuers": [
+                  ]
+                }
+              ],
+              "type": "VC",
+              "id": "54cc7ef0-1527-4d42-a40f-2650b2afd6d2"
+            }
+          ],
+          "rule-sets": [
+            {
+              "id": "62847a9a-64f0-4544-a7e8-bbc0d7fc0157",
+              "version": "2.0.3",
+              "name": "Verify a credential (signature w/ expiration check)",
+              "type": "VC",
+              "category": "generic",
+              "rules": [
+                {
+                  "version": "2.0.2",
+                  "name": "Check the credential is not expired",
+                  "predicate": "{\"if\":[{\"var\":\"payload.expirationDate\"},{\"not-after\":[{\"plusTime\":[{\"var\":\"external.validationClock\"},0,\"day\"]},{\"plusTime\":[{\"var\":\"payload.expirationDate\"},0,\"day\"]}]}, true]}",
+                  "type": "VC",
+                  "category": "generic",
+                  "id": "b7b9b663-080e-41ac-96dd-1109d8c09f9d"
+                }
+              ]
+            }
+          ]
+        },
+        "GHP": {
+          "metrics": [
+            {
+              "name": "Counts verifications by result, issuer, type",
+              "extract": {
+                "issuerDID": "issuer",
+                "credentialType": "type.2"
+              },
+              "countBy": {
+                "scan": true,
+                "scanResult": true,
+                "extract": true
+              }
+            }
+          ],
+          "display": [
+            {
+              "version": "2.0.0",
+              "name": "Display only minimum identity (name, date of birth)",
+              "customerId": "IBM",
+              "type": "GHP",
+              "category": "generic",
+              "fields": [
+                {
+                  "field": "credentialSubject.recipient.givenName",
+                  "displayValue": {
+                    "en": "First Name",
+                    "de": "Vorname"
+                  }
+                },
+                {
+                  "field": "credentialSubject.recipient.familyName",
+                  "displayValue": {
+                    "en": "Surname",
+                    "de": "Nachname"
+                  }
+                },
+                {
+                  "field": "credentialSubject.recipient.birthDate",
+                  "displayValue": {
+                    "en": "Date of Birth",
+                    "de": "Geburtsdatum"
+                  }
+                }
+              ],
+              "id": "6c94d670-abec-49d1-961b-6ec35d3d1940"
+            }
+          ],
+          "trust-lists": [
+            {
+              "version": "1.0.0",
+              "name": "Trust all issuers known to Open Digital Health Pass",
+              "items": [
+                {
+                  "purpose": "",
+                  "publisher": "IBM",
+                  "schemas": [
+                  ],
+                  "issuers": [
+                  ]
+                }
+              ],
+              "type": "GHP",
+              "id": "de45f872-3741-4dca-8ab6-795fa31cddab"
+            }
+          ],
+          "rule-sets": [
+            {
+              "id": "6f415fca-bf08-41f6-9f05-e8b70daf0329",
+              "version": "2.0.1",
+              "name": "Perform required credential checks",
+              "type": "GHP",
+              "category": "generic",
+              "rules": [
+                {
+                  "version": "2.0.2",
+                  "name": "Ensure its a supported credential",
+                  "predicate": "{\"if\":[{\"or\":[{\"in\":[\"VaccinationCredential\",{\"var\":\"payload.type\"}]},{\"in\":[\"TestCredential\",{\"var\":\"payload.type\"}]}]}, true, \"unknown\"]}",
+                  "type": "GHP",
+                  "category": "generic",
+                  "id": "5c3779dc-ea6e-47df-aa15-41e203ec7abe"
+                },
+                {
+                  "version": "2.0.2",
+                  "name": "Check the credential is not expired",
+                  "predicate": "{\"if\":[{\"var\":\"payload.expirationDate\"},{\"not-after\":[{\"plusTime\":[{\"var\":\"external.validationClock\"},0,\"day\"]},{\"plusTime\":[{\"var\":\"payload.expirationDate\"},0,\"day\"]}]}, true]}",
+                  "type": "VC",
+                  "category": "generic",
+                  "id": "b7b9b663-080e-41ac-96dd-1109d8c09f9d"
+                }
+              ]
+            },
+            {
+              "id": "772baf2a-74b8-4ea6-ac6f-33050057322b",
+              "version": "2.0.2",
+              "name": "Verify a Vaccination (signature w/ rules)",
+              "type": "GHP",
+              "category": "vaccination",
+              "rules": [
+                {
+                  "version": "2.0.0",
+                  "name": "Check it is 14 to 365 days since getting the vaccination",
+                  "predicate": "{\"if\": [{\"in\": [\"VaccinationCredential\",{\"var\": \"payload.type\"}]},{\"not-after\": [{\"plusTime\": [{\"var\": \"payload.credentialSubject.dateOfVaccination\"},14,\"day\"]},{\"plusTime\": [{\"var\": \"external.validationClock\"},0,\"day\"]},{\"plusTime\": [{\"var\": \"payload.credentialSubject.dateOfVaccination\"},365,\"day\"]}]}, true]}",
+                  "type": "GHP",
+                  "category": "vaccination",
+                  "id": "65d2e8d6-36b4-4298-8a28-649718c72a2f"
+                },
+                {
+                  "version": "2.0.0",
+                  "name": "Check for approved vaccine",
+                  "predicate": "{\"if\":[{\"in\":[\"VaccinationCredential\",{\"var\":\"payload.type\"}]},{\"in\":[{\"var\":\"payload.credentialSubject.medicinalProductCode\"},[\"207\",\"208\",\"210\",\"212\"]]},true]}",
+                  "type": "GHP",
+                  "category": "vaccination",
+                  "id": "1e3843d1-2599-43af-8277-1ca48e46999f"
+                },
+                {
+                  "version": "2.0.0",
+                  "name": "Check for completed vaccination cycle",
+                  "predicate": "{\"if\":[{\"in\":[\"VaccinationCredential\",{\"var\":\"payload.type\"}]},{\">=\":[{\"var\":\"payload.credentialSubject.doseNumber\"},{\"var\":\"payload.credentialSubject.dosesPerCycle\"}]},true]}",
+                  "type": "GHP",
+                  "category": "vaccination",
+                  "id": "38a25914-4ad2-474c-a6ce-f69e89918c2b"
+                }
+              ]
+            },
+            {
+              "id": "b14bb493-eb86-4499-be5f-60e8b3a91ca6",
+              "version": "2.0.2",
+              "name": "Verify a Test (signature w/ rules including 72 hour check)",
+              "type": "GHP",
+              "category": "test",
+              "rules": [
+                {
+                  "version": "2.0.0",
+                  "name": "Check it is less than 72 hours since getting the test",
+                  "predicate": "{\"if\": [{\"in\": [\"TestCredential\",{\"var\": \"payload.type\"}]},{\"not-after\": [{\"plusTime\": [{\"var\": \"payload.credentialSubject.dateOfSample\"},0,\"day\"]},{\"plusTime\": [{\"var\": \"external.validationClock\"},0,\"day\"]},{\"plusTime\": [{\"var\": \"payload.credentialSubject.dateOfSample\"},72,\"hour\"]}]}, true]}",
+                  "type": "GHP",
+                  "category": "test",
+                  "id": "23a9cd6d-6b1b-4e3c-9a54-3c58a8140451"
+                },
+                {
+                  "version": "2.0.1",
+                  "name": "Check for negative test result",
+                  "predicate": "{\"if\": [{\"in\": [\"TestCredential\",{\"var\": \"payload.type\"}]},{\"===\": [{\"var\": \"payload.credentialSubject.testResult\"},\"Not detected\"]}, true]}",
+                  "type": "GHP",
+                  "category": "test",
+                  "id": "4f9910c1-d1c8-4b88-9050-000ed569afd2"
+                },
+                {
+                  "version": "2.0.1",
+                  "name": "Check for approved test",
+                  "predicate": "{\"if\":[{\"in\":[\"TestCredential\",{\"var\":\"payload.type\"}]},{\"in\":[{\"var\":\"payload.credentialSubject.testType\"},[\"50548-7\",\"68993-5\",\"82159-5\",\"94306-8\",\"94307-6\",\"94308-4\",\"94309-2\",\"94500-6\",\"94502-2\",\"94503-0\",\"94504-8\",\"94507-1\",\"94508-9\",\"94531-1\",\"94533-7\",\"94534-5\",\"94547-7\",\"94558-4\",\"94559-2\",\"94562-6\"]]},true]}",
+                  "type": "GHP",
+                  "category": "test",
+                  "id": "ed4bb520-390e-4b3d-a34f-17699dd843ca"
+                }
+              ]
+            }
+          ]
+        },
+        "SHC": {
+          "metrics": [
+            {
+              "name": "Counts verifications by result, issuer, type",
+              "extract": {
+                "issuerDID": "iss",
+                "credentialType": "type.2"
+              },
+              "countBy": {
+                "scan": true,
+                "scanResult": true,
+                "extract": true
+              }
+            }
+          ],
+          "display": [
+            {
+              "version": "2.0.0",
+              "name": "Display only minimum identity (name, date of birth)",
+              "customerId": "IBM",
+              "type": "SHC",
+              "category": "generic",
+              "fields": [
+                {
+                  "field": "vc.credentialSubject.fhirBundle.entry[0].resource.name[0].given",
+                  "displayValue": {
+                    "en": "First Name",
+                    "de": "Vorname"
+                  }
+                },
+                {
+                  "field": "vc.credentialSubject.fhirBundle.entry[0].resource.name[0].family",
+                  "displayValue": {
+                    "en": "Surname",
+                    "de": "Nachname"
+                  }
+                },
+                {
+                  "field": "vc.credentialSubject.fhirBundle.entry[0].resource.birthDate",
+                  "displayValue": {
+                    "en": "Date of Birth",
+                    "de": "Geburtsdatum"
+                  }
+                }
+              ],
+              "id": "4f853e85-bc5c-4ecb-8c26-562de6769182"
+            }
+          ],
+          "trust-lists": [
+            {
+              "version": "1.0.0",
+              "name": "Trust all issuers registered in the VCI Directory",
+              "items": [
+                {
+                  "purpose": "",
+                  "publisher": "IBM",
+                  "schemas": [
+                  ],
+                  "issuers": [
+                  ]
+                }
+              ],
+              "type": "SHC",
+              "id": "6b873e47-1f2f-413f-b9d3-282e450e405f"
+            }
+          ],
+          "rule-sets": [
+            {
+              "id": "8bbcf09a-f548-42bd-81fc-784d6bfd3793",
+              "version": "2.0.1",
+              "name": "Perform required credential checks",
+              "type": "SHC",
+              "category": "generic",
+              "rules": [
+                {
+                  "version": "2.0.2",
+                  "name": "Ensure its a supported credential",
+                  "predicate": "{\"if\":[{\"or\":[{\"in\":[\"https://smarthealth.cards#laboratory\",{\"var\":\"payload.vc.type\"}]},{\"in\":[\"https://smarthealth.cards#immunization\",{\"var\":\"payload.vc.type\"}]}]},true,false]}",
+                  "type": "SHC",
+                  "category": "generic",
+                  "id": "fb26e0f4-6458-4aaa-9062-7223c95b55ce"
+                },
+                {
+                  "version": "2.0.2",
+                  "name": "Check the credential is not expired",
+                  "predicate": "{\"if\":[{\"var\":\"payload.expirationDate\"},{\"not-after\":[{\"plusTime\":[{\"var\":\"external.validationClock\"},0,\"day\"]},{\"plusTime\":[{\"var\":\"payload.expirationDate\"},0,\"day\"]}]}, true]}",
+                  "type": "VC",
+                  "category": "generic",
+                  "id": "b7b9b663-080e-41ac-96dd-1109d8c09f9d"
+                }
+              ]
+            },
+            {
+              "id": "6c336429-a6d9-4a37-8404-ce796f0a0d5b",
+              "version": "2.0.1",
+              "name": "Verify a Vaccination (signature w/ rules)",
+              "type": "SHC",
+              "category": "vaccination",
+              "rules": [
+                {
+                  "version": "2.0.3",
+                  "name": "Check for completed vaccination cycle, of approved vaccine, between 14 and 365 days ago (double dose)",
+                  "predicate": "{\"if\":[{\"and\":[{\"in\":[\"https://smarthealth.cards#immunization\",{\"var\":\"payload.vc.type\"}]},{\"in\":[{\"var\":\"payload.vc.credentialSubject.fhirBundle.entry.1.resource.vaccineCode.coding.0.code\"},[\"207\",\"208\",\"210\"]]}]},{\"not-after\":[{\"plusTime\":[{\"var\":\"payload.vc.credentialSubject.fhirBundle.entry.2.resource.occurrenceDateTime\"},14,\"day\"]},{\"plusTime\":[{\"var\":\"external.validationClock\"},0,\"day\"]},{\"plusTime\":[{\"var\":\"payload.vc.credentialSubject.fhirBundle.entry.2.resource.occurrenceDateTime\"},365,\"day\"]}]},true]}",
+                  "type": "SHC",
+                  "category": "vaccination",
+                  "id": "be9aaabb-8645-4d49-8f8d-e733e9229c80"
+                },
+                {
+                  "version": "2.0.2",
+                  "name": "Check for completed vaccination cycle, of approved vaccine, between 14 and 365 days ago (single dose)",
+                  "predicate": "{\"if\":[{\"and\":[{\"in\":[\"https://smarthealth.cards#immunization\",{\"var\":\"payload.vc.type\"}]},{\"in\":[{\"var\":\"payload.vc.credentialSubject.fhirBundle.entry.1.resource.vaccineCode.coding.0.code\"},[\"212\"]]}]},{\"not-after\":[{\"plusTime\":[{\"var\":\"payload.vc.credentialSubject.fhirBundle.entry.1.resource.occurrenceDateTime\"},14,\"day\"]},{\"plusTime\":[{\"var\":\"external.validationClock\"},0,\"day\"]},{\"plusTime\":[{\"var\":\"payload.vc.credentialSubject.fhirBundle.entry.1.resource.occurrenceDateTime\"},365,\"day\"]}]},true]}",
+                  "type": "SHC",
+                  "category": "vaccination",
+                  "id": "a6e3b187-0350-4423-9d0d-7ef9e5eccc20"
+                }
+              ]
+            },
+            {
+              "id": "ec7fa29d-1a1d-48bc-9c79-9bbf44b3eb50",
+              "version": "2.0.2",
+              "name": "Verify a Test (signature w/ rules including 72 hour check)",
+              "type": "SHC",
+              "category": "test",
+              "rules": [
+                {
+                  "version": "2.0.0",
+                  "name": "Check it is less than 72 hours since getting the test",
+                  "predicate": "{\"if\": [{\"in\": [\"https://smarthealth.cards#laboratory\",{\"var\": \"payload.vc.type\"}]},{\"not-after\": [{\"plusTime\": [{\"var\": \"payload.vc.credentialSubject.fhirBundle.entry.1.resource.effectiveDateTime\"},0,\"day\"]},{\"plusTime\": [{\"var\": \"external.validationClock\"},0,\"day\"]},{\"plusTime\": [{\"var\": \"payload.vc.credentialSubject.fhirBundle.entry.1.resource.effectiveDateTime\"},72,\"hour\"]}]}]}",
+                  "type": "SHC",
+                  "category": "test",
+                  "id": "4a2a9e4b-aed2-4b17-9b24-49c8deb70174"
+                },
+                {
+                  "version": "2.0.0",
+                  "name": "Check for negative test result",
+                  "predicate": "{\"if\": [{\"in\": [\"https://smarthealth.cards#laboratory\",{\"var\": \"payload.vc.type\"}]},{\"===\": [{\"var\": \"payload.vc.credentialSubject.fhirBundle.entry.1.resource.valueCodeableConcept.coding.0.code\"},\"260415000\"]}]}",
+                  "type": "SHC",
+                  "category": "test",
+                  "id": "f07544d8-10be-4098-893d-0dc1882a9090"
+                },
+                {
+                  "version": "2.0.0",
+                  "name": "Check for approved test",
+                  "predicate": "{\"if\": [{\"in\": [\"https://smarthealth.cards#laboratory\",{\"var\": \"payload.vc.type\"}]},{\"in\":[{\"var\":\"payload.vc.credentialSubject.fhirBundle.entry.1.resource.code.coding.code\"},[\"50548-7\",\"68993-5\",\"82159-5\",\"94306-8\",\"94307-6\",\"94308-4\",\"94309-2\",\"94500-6\",\"94502-2\",\"94503-0\",\"94504-8\",\"94507-1\",\"94508-9\",\"94531-1\",\"94533-7\",\"94534-5\",\"94547-7\",\"94558-4\",\"94559-2\",\"94562-6\"]]},true]}",
+                  "type": "SHC",
+                  "category": "test",
+                  "id": "54735288-8850-4210-bb3b-205c9188570f"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "unrestricted": true
+    }
+  ]
+}

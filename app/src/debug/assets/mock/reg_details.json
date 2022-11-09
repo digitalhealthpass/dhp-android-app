@@ -1,0 +1,103 @@
+{
+  "message": "Successfully retrieved schema information",
+  "payload": {
+    "@type": "https://w3c-ccg.github.io/vc-json-schemas/schema/1.0/schema.json",
+    "author": "did:hpass:095573b3ed146d92780bb6a51fadb9c64e0bc975079723b5f93db666ee44a67d:c2ba86e0beda3902e8784fadbdfbe72d97f2e8f305cee00311366ac414acb883",
+    "authorName": "NIH",
+    "authored": "2020-12-04T19:35:34Z",
+    "id": "did:hpass:095573b3ed146d92780bb6a51fadb9c64e0bc975079723b5f93db666ee44a67d:c2ba86e0beda3902e8784fadbdfbe72d97f2e8f305cee00311366ac414acb883,id:nihId,version:0.2",
+    "modelVersion": "0.2",
+    "name": "NIH ID",
+    "proof": {
+      "created": "2020-12-04T19:35:34Z",
+      "creator": "did:hpass:095573b3ed146d92780bb6a51fadb9c64e0bc975079723b5f93db666ee44a67d:c2ba86e0beda3902e8784fadbdfbe72d97f2e8f305cee00311366ac414acb883#key-1",
+      "nonce": "250325c2-b295-41d4-b94d-f475c9aa016e",
+      "signatureValue": "MEUCIFWsKXd7ST1xdW570y8w6O1C737gO9fhgNckHoG_cWMVAiEAqF0gQ5nBVxmphq0rLPPyF53Uohpwizk290swlqW1RfM",
+      "type": "EcdsaSecp256r1Signature2019"
+    },
+    "schema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "@context": {
+        "ageRange": "https://www.w3.org/ns/dpv#dpv:Age",
+        "gender": "https://www.w3.org/ns/dpv#dpv:Gender",
+        "id": "https://www.w3.org/ns/dpv#dpv:UID",
+        "location": "https://www.w3.org/ns/dpv#dpv:Location",
+        "race": "https://www.w3.org/ns/dpv#dpv:Race"
+      },
+      "properties": {
+        "ageRange": {
+          "enum": [
+            "18-24",
+            "25-34",
+            "35-44",
+            "45-54",
+            "55-64",
+            "65+"
+          ],
+          "type": "string",
+          "visible": 1
+        },
+        "gender": {
+          "description": "FHIR gender codes",
+          "enum": [
+            "male",
+            "female",
+            "other"
+          ],
+          "type": "string",
+          "visible": 1
+        },
+        "id": {
+          "type": "string",
+          "visible": 1
+        },
+        "key": {
+          "type": "string",
+          "visible": 1
+        },
+        "location": {
+          "description": "Subdivision code of the ISO 3166-2 country",
+          "pattern": "^[a-zA-Z0]{2}[\\-][a-zA-Z0-9]+$",
+          "type": "string",
+          "visible": 1
+        },
+        "race": {
+          "additionalItems": 0,
+          "description": "NIH race codes",
+          "items": {
+            "enum": [
+              "White/Caucasian",
+              "Hispanic or Latino",
+              "Black or African American",
+              "Asian",
+              "American Indian or Alaska Native",
+              "Native Hawaiian or Other Pacific Islander",
+              "Other Race",
+              "Unknown/Not Provided",
+              "Decline to state"
+            ],
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "type": {
+          "enum": [
+            "id"
+          ],
+          "type": "string",
+          "visible": 0
+        }
+      },
+      "required": [
+        "type",
+        "key",
+        "gender",
+        "ageRange",
+        "race",
+        "location"
+      ],
+      "type": "object"
+    }
+  },
+  "type": "schema"
+}

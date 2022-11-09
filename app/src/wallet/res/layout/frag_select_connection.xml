@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:paddingBottom="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/text_margin"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="@string/add_new_connection"
+            android:textAllCaps="true"
+            android:textColor="@color/subTextLabels"
+            android:textSize="@dimen/font_14" />
+
+        <com.merative.healthpass.ui.common.custom.QrCodeMethod
+            android:id="@+id/btn_qr_camera"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            app:qcm_icon="@drawable/ic_app_registration_black_24dp"
+            app:qcm_right_text="@string/new_connection"
+            app:qcm_show_divider="false" />
+
+        <TextView
+            android:id="@+id/available_connection_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/text_margin"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="@string/available_connections"
+            android:textAllCaps="true"
+            android:textColor="@color/subTextLabels"
+            android:textSize="@dimen/font_14" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_8" />
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

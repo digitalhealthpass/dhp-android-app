@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <drawable name="white">@color/white</drawable>
+    <drawable name="black">@color/black</drawable>
+    <drawable name="transparent">@android:color/transparent</drawable>
+
+    <!-- App Theme Color -->
+
+    <drawable name="drawable_accent">@color/colorAccent</drawable>
+    <drawable name="drawable_primary">@color/colorPrimary</drawable>
+</resources>

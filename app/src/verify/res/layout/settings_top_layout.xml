@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:parentTag="android.widget.LinearLayout">
+
+    <LinearLayout
+        android:id="@+id/settings_top_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/activity_vertical_margin"
+            app:cardBackgroundColor="@color/cardBackground"
+            app:cardCornerRadius="10dp">
+
+            <com.merative.healthpass.ui.common.custom.LabelValueItem
+                android:id="@+id/lvi_organizations"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                app:lvi_left="@string/Profile_currentOrganization_title"
+                app:lvi_show_divider="false" />
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- TODO add/remove revoke totally based on requirements -->
+        <TextView
+            android:id="@+id/revoke_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:textColor="@color/subTextLabels"
+            android:textSize="@dimen/font_body"
+            android:visibility="gone"
+            tools:text="VERIFICATION RULES" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="5dp"
+            android:visibility="gone"
+            app:cardBackgroundColor="@color/cardBackground"
+            app:cardCornerRadius="10dp">
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switch_revoke"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/minAccessibilityHeight"
+                android:layout_marginHorizontal="@dimen/text_margin"
+                android:text="@string/contact_delete_revoke"
+                android:textSize="@dimen/font_body" />
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/revoke_footer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:text="@string/profile_revokeStatus_footer"
+            android:textColor="@color/subTextLabels"
+            android:textSize="@dimen/font_body"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+</merge>

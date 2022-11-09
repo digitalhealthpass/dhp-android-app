@@ -1,0 +1,288 @@
+import java.util.regex.Matcher
+import java.util.regex.Pattern
+
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-parcelize'
+
+apply plugin: 'kotlin-kapt'
+apply plugin: "androidx.navigation.safeargs.kotlin"
+
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'// Google Services plugin
+// Apply the App Distribution Gradle plugin
+apply plugin: 'com.google.firebase.appdistribution'
+
+android {
+    def rootPath = rootDir.path
+
+    ndkVersion "23.1.7779620"
+
+    signingConfigs {
+        walletConfig {
+            storeFile file("$rootPath/key_store.jks")
+            storePassword 'watson12#'
+            keyAlias 'key0'
+            keyPassword '12watson#'
+        }
+
+        verifyConfig {
+            storeFile file("$rootPath/key_store.jks")
+            storePassword 'watson12#'
+            keyAlias 'keyV'
+            keyPassword '12watsonverify#'
+        }
+    }
+    compileSdkVersion 30
+    defaultConfig {
+        applicationId "com.merative.watson.healthpass.wallet"
+        minSdkVersion 28
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+        useLibrary 'org.apache.http.legacy'
+
+        proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    }
+
+    flavorDimensions "product"
+    productFlavors {
+        wallet {
+            dimension "product"
+            applicationId "com.merative.watson.healthpass.wallet"
+            versionCode 1
+            versionName "0.0.1"
+
+            firebaseAppDistribution {
+                //id match id in google-services.json
+                appId = "1:636918914772:android:72f38e246e2ac9cb7aa541"
+                releaseNotesFile = "$rootPath/app/src/wallet/releasenotes.txt"
+                groupsFile = "$rootPath/app/src/wallet/fbGroupsFile.txt"
+                serviceCredentialsFile = "$rootPath/serviceaccount_accesskey.json"
+            }
+        }
+
+        verify {
+            dimension "product"
+            applicationId "com.merative.watson.healthpass.verify"
+            versionCode 1
+            versionName "0.0.1"
+
+            firebaseAppDistribution {
+                //id match id in google-services.json
+                appId = "1:636918914772:android:dd49112dbb9eca7c7aa541"
+                releaseNotesFile = "$rootPath/app/src/verify/releasenotes.txt"
+                groupsFile = "$rootPath/app/src/verify/fbGroupsFile.txt"
+                serviceCredentialsFile = "$rootPath/serviceaccount_accesskey.json"
+            }
+        }
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+            minifyEnabled false
+            matchingFallbacks = ['debug']
+
+            //samsung pay
+            buildConfigField("String", "SPAY_SERVICEID", "\"95c060cf15444cee8107ca\"")
+            buildConfigField("boolean", "SPAY_ENABLED", "true")
+            manifestPlaceholders["spay_debug_mode"] = "Y"
+            manifestPlaceholders["spay_debug_api_key"] = "9e18aac61dc343b1bbc1813139e9be05"
+        }
+        qa {
+            //firebase
+            initWith debug
+            applicationIdSuffix ".qa"
+
+            //samsung pay
+            buildConfigField("String", "SPAY_SERVICEID", "\"739890a4656d426a98d3bd\"")
+            buildConfigField("boolean", "SPAY_ENABLED", "true")
+            manifestPlaceholders["spay_debug_mode"] = "Y"
+            manifestPlaceholders["spay_debug_api_key"] = "4f293586894549309049af9f99d690ec"
+        }
+        release {
+            shrinkResources true
+            minifyEnabled true
+            debuggable false
+
+            ndk {
+                debugSymbolLevel 'FULL'
+            }
+
+            productFlavors.wallet.signingConfig signingConfigs.walletConfig
+            productFlavors.verify.signingConfig signingConfigs.verifyConfig
+
+            //samsung pay
+            manifestPlaceholders["spay_debug_mode"] = "N"
+            manifestPlaceholders["spay_debug_api_key"] = ""
+            buildConfigField("String", "SPAY_SERVICEID", "\"23c2e6e0f481432eb091ef\"")
+            buildConfigField("boolean", "SPAY_ENABLED", "true")
+        }
+    }
+
+    android.applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            //${variant.buildType.name}-${variant.getFlavorName()}-${new Date().format('ddMMMyyyy_HH-mm')}
+            def outputName = "v${versionName}_${versionCode}"
+            output.outputFileName = outputName + ".apk"
+        }
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+    lintOptions {
+        checkDependencies = true
+        disable "InvalidFragmentVersionForActivityResult"
+    }
+
+    testBuildType "qa"
+}
+
+allprojects {
+    repositories {
+        maven { url "https://oss.jfrog.org/libs-snapshot" }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines"
+    implementation "androidx.appcompat:appcompat:$app_compat"
+    implementation "com.google.android.material:material:$mat_ver"
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+
+    implementation "androidx.fragment:fragment-ktx:$fragment"
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
+    implementation 'androidx.annotation:annotation:1.2.0'
+    implementation 'com.android.support:multidex:1.0.3'
+
+    //network
+    implementation "com.squareup.retrofit2:retrofit:$retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit"
+    implementation "com.squareup.retrofit2:adapter-rxjava3:$retrofit"
+    implementation "com.squareup.retrofit2:converter-scalars:$retrofit"
+    implementation "com.squareup.okhttp3:okhttp:$okhttp"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp"
+    implementation "com.google.code.gson:gson:$gson"
+
+    //biometrics
+    implementation 'androidx.biometric:biometric:1.0.1'
+
+    //secure shared preference, alpha 3 is crashing on Android 10, BE CAREFUL BEFORE UPGRADING
+    implementation 'androidx.security:security-crypto:1.0.0-alpha02'
+
+    //barcode
+    implementation "com.google.zxing:core:$zxing_code"
+    implementation "androidx.legacy:legacy-support-v4:$legacy_support"
+    implementation "net.lingala.zip4j:zip4j:$zip4"
+
+    //android ktx
+    implementation "androidx.core:core-ktx:$ktx_extension"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lfcycle"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lfcycle"
+
+    implementation 'com.google.dagger:dagger:2.31'
+
+    kapt('com.google.dagger:dagger-compiler:2.31')
+
+    testImplementation 'junit:junit:4.13.1'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-intents:3.3.0'
+    androidTestImplementation "androidx.fragment:fragment-testing:1.3.4"
+    androidTestImplementation 'androidx.test.uiautomator:uiautomator:2.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.3.0'
+    androidTestImplementation 'androidx.test:rules:1.4.0-alpha04'
+
+    //rxjava
+    implementation "io.reactivex.rxjava3:rxandroid:$rxkotlin"
+    // Because RxAndroid releases are few and far between, it is recommended you also
+    // explicitly depend on RxJava's latest version for bug fixes and new features.
+    // (see https://github.com/ReactiveX/RxJava/releases for latest 3.x.x version)
+    implementation "io.reactivex.rxjava3:rxkotlin:$rxkotlin"
+
+    //google sign in
+    implementation 'com.google.android.gms:play-services-auth:19.0.0'
+    implementation 'com.google.android.gms:play-services-auth-api-phone:17.5.0'
+
+    implementation 'androidx.preference:preference-ktx:1.1.1'
+
+    //webview to enable dark mode
+    implementation 'androidx.webkit:webkit:1.4.0'
+
+    //add dependency projects
+    implementation project(path: ':QRCoder')
+    implementation project(path: ':VerifiableCredential')
+    implementation project(path: ':VerificationEngine')
+
+    //section adapter
+    implementation 'io.github.luizgrp.sectionedrecyclerviewadapter:sectionedrecyclerviewadapter:3.2.0'
+
+    // Import the BoM for the Firebase platform
+    implementation platform('com.google.firebase:firebase-bom:26.4.0')
+
+    // Declare the dependencies for the Crashlytics and Analytics libraries
+    // When using the BoM, you don't specify versions in Firebase library dependencies
+    implementation 'com.google.firebase:firebase-crashlytics'
+
+    // CameraX preview
+    implementation "androidx.camera:camera-view:$camera_x_view"
+
+    // Barcode model
+    implementation "com.google.mlkit:barcode-scanning:$ml_kit"
+
+    //Samsung Pay
+    compile files('libs/SamsungPaySDK_2.16.00_release.jar')
+}
+
+def getCurrentFlavour() {
+    Gradle gradle = getGradle()
+    String taskReqStr = gradle.getStartParameter().getTaskRequests().toString()
+    Pattern pattern
+    if (taskReqStr.contains("assemble")) {
+        pattern = Pattern.compile("assemble(\\w+)(Release|Debug)")
+    } else {
+        pattern = Pattern.compile("generate(\\w+)(Release|Debug)")
+    }
+
+    Matcher matcher = pattern.matcher(taskReqStr)
+    if (matcher.find()) {
+        String flavor = matcher.group(1)
+        // This makes first character to lowercase.
+        char[] c = flavor.toCharArray()
+        c[0] = Character.toLowerCase(c[0])
+        flavor = new String(c)
+        println "getCurrentFlavor: " + flavor
+        return flavor
+    } else {
+        println "getCurrentFlavor: cannot_find_current_flavor"
+        return ""
+    }
+}
+
+def getFlavorPath() {
+    String flavorName = getCurrentFlavour()
+    //names reflect the Flavor names, so be careful changing it
+    if (flavorName.contains("wallet")) {
+        return "app/src/wallet"
+    } else if (flavorName.contains("verify")) {
+        return "app/src/verify"
+    }
+}

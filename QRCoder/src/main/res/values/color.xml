@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color_authorize_button">#0F62FE</color>
+    <color name="color_authorize_text">#FFFFFF</color>
+    <color name="color_icon_bg">#697077</color>
+    <color name="color_icon_bg_pressed">#656565</color>
+    <color name="color_scan_overlay_green_corners">#6fdc8c</color>
+    <color name="color_grey_transparent_background">#33000000</color>
+</resources>

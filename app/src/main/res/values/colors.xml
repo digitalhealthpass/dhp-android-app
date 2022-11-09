@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <color name="colorPrimary">#0F62FE</color>
+    <color name="colorPrimaryDark">#4589FF</color>
+    <color name="colorAccent">#0051A5</color>
+
+    <color name="colorIndigo">#5c50de</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="red">#cd3025</color>
+
+    <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">@color/colorPrimary</color>
+
+    <color name="removeAllBackground">#F44336</color>
+    <color name="appBackground">#F2F2F8</color>
+    <color name="cardBackground">#FFFFFF</color>
+    <color name="sheetBackground">#FFFFFF</color>
+    <color name="formFieldLines">#E0E4E7</color>
+    <color name="notch">#E0E4E7</color>
+    <color name="textLabels">#000000</color>
+    <color name="textLabelsInverse">#FFFFFF</color>
+    <color name="subTextLabels">#697077</color>
+    <color name="credentialColor">#000000</color>
+    <color name="contactColor">#FFFFFF</color>
+    <color name="credentialColorShc">#0072C3</color>
+    <color name="credentialColorDcc">#002d9c</color>
+    <color name="credentialColorIDHPOrGHPOrVCC">#2dc630</color>
+    <color name="credentialColorLoading">#BFBFC5</color>
+    <color name="switch_on">#34C759</color>
+    <color name="switch_off">@color/subTextLabels</color>
+    <color name="systemOrange">#ff9500</color>
+    <color name="grayButtonBackground">#2b2b2b</color>
+    <color name="card_placeholder_bg">#A78DD4</color>
+    <color name="contact_placeholder_bg">#D1FBF9</color>
+
+    <!-- logo color   -->
+    <color name="ic_gradient_01">#FF08BDBA</color>
+    <color name="ic_gradient_09">#FF8A3FFC</color>
+    <color name="ic_plus_fill">#001d6c</color>
+    <color name="ic_back_fill">#FFFFFFFF</color>
+
+</resources>

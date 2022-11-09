@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            ​
+            <TextView
+                android:id="@+id/pin_settings_header_textview"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:gravity="start|center_vertical"
+                android:paddingVertical="@dimen/activity_vertical_margin"
+                android:text="@string/four_digit_pin_title"
+                android:textColor="@color/subTextLabels"
+                android:textSize="@dimen/font_14"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            ​
+            <androidx.cardview.widget.CardView
+                android:id="@+id/four_digit_pin_container"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                app:cardBackgroundColor="@color/cardBackground"
+                app:cardCornerRadius="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/pin_settings_header_textview">
+                ​
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    ​
+                    <Button
+                        android:id="@+id/button_create_pin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:gravity="start|center_vertical"
+                        android:text="@string/profile_pin_create"
+                        android:textAlignment="textStart"
+                        android:textAllCaps="false"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/font_body" />
+                    ​
+                    <View
+                        style="@style/DividerGrey"
+                        android:layout_width="match_parent"
+                        android:layout_marginLeft="16dp" />
+                    ​
+                    <Button
+                        android:id="@+id/button_delete_pin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:gravity="start|center_vertical"
+                        android:text="@string/profile_pin_delete"
+                        android:textAlignment="textStart"
+                        android:textAllCaps="false"
+                        android:textColor="@color/red"
+                        android:textSize="@dimen/font_body" />
+                    ​
+                </LinearLayout>
+                ​
+            </androidx.cardview.widget.CardView>
+            ​
+            <TextView
+                android:id="@+id/biometric_option_header_textview"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="48dp"
+                android:gravity="start|center_vertical"
+                android:text="@string/biometric_option_title"
+                android:textColor="@color/subTextLabels"
+                android:textSize="@dimen/font_14"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/four_digit_pin_container" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/supported_login_container"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/activity_vertical_margin"
+                app:cardBackgroundColor="@color/cardBackground"
+                app:cardCornerRadius="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/biometric_option_header_textview">
+                ​
+                <include
+                    android:id="@+id/ping_settings_bio_container"
+                    layout="@layout/simple_recycler_label_value_item"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp" />
+                ​
+            </androidx.cardview.widget.CardView>
+            ​
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        ​
+        ​
+    </androidx.core.widget.NestedScrollView>
+    ​
+</androidx.constraintlayout.widget.ConstraintLayout>

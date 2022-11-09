@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/settings_top_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/profile_cred_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/activity_vertical_margin"
+            app:cardBackgroundColor="@color/cardBackground"
+            app:cardCornerRadius="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/create_backup_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:minHeight="@dimen/minAccessibilityHeight"
+                    android:gravity="start|center_vertical"
+                    android:text="@string/profile_create_backup_title"
+                    android:textAlignment="textStart"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/font_body" />
+
+                <View
+                    android:id="@+id/cache_storage_divider2"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                    android:background="@color/formFieldLines"
+                    app:layout_constraintTop_toBottomOf="@id/button_reset_cache" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/import_backup_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="@dimen/minAccessibilityHeight"
+                    android:background="@android:color/transparent"
+                    android:gravity="start|center_vertical"
+                    android:text="@string/profile_create_import_title"
+                    android:textAlignment="textStart"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/font_body" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/settings_txt_restore_tip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="14dp"
+            android:text="@string/backup_tip"
+            android:textColor="@color/subTextLabels"
+            android:textSize="@dimen/font_secondary" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_pin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/activity_vertical_margin"
+            android:drawableEnd="@drawable/ic_chevron_right"
+            android:gravity="start|center_vertical"
+            android:text="@string/login_and_pin_title"
+            android:textAllCaps="false"
+            android:minHeight="@dimen/minAccessibilityHeight"
+            android:textColor="@color/textLabels"
+            android:textSize="@dimen/font_body"
+            app:backgroundTint="@color/cardBackground" />
+
+    </LinearLayout>
+
+</merge>
