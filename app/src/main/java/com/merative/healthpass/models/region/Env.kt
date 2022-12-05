@@ -15,6 +15,12 @@ enum class Env(
     val isProd: Boolean = false,
     val SAMSUNG_PAY_BASE_URL: String = "https://api-us1.mpay.samsung.com"
 ) : Serializable {
+    LOCALHOST(
+        "http://192.168.1.12:3000/api/v1/",
+        "hpass.issuer1",
+        "localhost",
+        ""
+    ),
     AUSTRALIA_SANDBOX(
         "https://hpass-api-edge-dhp-hpass.openshift-ibp-poc-us-ea-4b0b005ca0769ba035219b04895f6ade-0000.us-east.containers.appdomain.cloud/api/v1",
         "hpass.issuer1",

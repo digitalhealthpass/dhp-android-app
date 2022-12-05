@@ -59,6 +59,7 @@
     <string name="cred_delete_title">"Delete Cards"</string>
     <string name="obfuscation_personal_information">"Personal Information"</string>
     <!--    //Environment Target-->
+    <string name="env_localhost">"localhost"</string>
     <string name="env_canada">"Canada"</string>
     <string name="env_us">"USA"</string>
     <string name="env_ap">"Asia Pacific"</string>

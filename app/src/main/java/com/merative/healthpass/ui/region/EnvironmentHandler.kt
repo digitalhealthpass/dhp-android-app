@@ -57,6 +57,7 @@ class EnvironmentHandler @Inject constructor(
     private fun addEnvironments() {
         if (BuildConfig.DEBUG) {
             envList.apply {
+                add(Env.LOCALHOST)
                 add(Env.AUSTRALIA_SANDBOX)
                 add(Env.USA_SANDBOX_1)
                 add(Env.USA_SANDBOX_2)
