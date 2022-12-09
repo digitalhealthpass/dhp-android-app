@@ -34,7 +34,7 @@ class ConfigRepo @Inject constructor(
         return configDB.loadAll()
             .map { response ->
                 response.dataList.filter {
-                    it.payload?.id == id
+                    it.payload[0].id == id
                 }
             }
     }
@@ -66,10 +66,10 @@ class ConfigRepo @Inject constructor(
         val downloadDate = config.saveTime
         val refreshPeriod =
             (Date().time - downloadDate.time) / 1000
-        if (payload?.refresh == null) {
+        if (payload[0]?.refresh == null) {
             return false
         }
-        if (refreshPeriod > payload.refresh!!) {
+        if (refreshPeriod > payload[0].refresh!!) {
             return true
         }
         return false
