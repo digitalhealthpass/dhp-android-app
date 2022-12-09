@@ -15,7 +15,7 @@ import java.util.*
 @Parcelize
 data class ConfigResponse(
     val type: String?,
-    val payload: ConfigPayload?,
+    val payload: ArrayList<ConfigPayload> = arrayListOf(),
     var saveTime: Date = Date(),
 ) : BaseResponse()
 
