@@ -350,7 +350,7 @@ class ScanResultsViewModel @Inject constructor(
             ?: throw OrganizationException("Cannot find Config Id")
         return configRepo.getConfig(configId).map { response ->
             configType = response.type
-            configPayload = response.payload
+            configPayload = response.payload[0]
             parseConfig()
         }
     }
